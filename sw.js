@@ -3,7 +3,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox
 if (workbox) {
     console.log(`[Workbox] carregado!`);
 
-    const base_dir = '/projetos/dev/template-pwa-bancada/';
+    const base_dir = '/dev/template-pwa-bancada/';
     const rev_val = 1;
 
     workbox.core.setCacheNameDetails({

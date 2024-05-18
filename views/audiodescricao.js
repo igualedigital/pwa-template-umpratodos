@@ -33,14 +33,25 @@ qrCodeFw.views.audiodescricao = function() {
 
         // Função para carregar e tocar a faixa atual
         const loadTrack = (index) => {
-            let track = AudioTracks.listarFaixas('audio')[index];
+            let track = VideoTracks.listarFaixas('audio')[index];
             itemtitle.html(track.titulo);
             mediaElement.src = track.arquivo;
             updateBanner(track);
-
-            if (qrCodeFw.audio_autoplay) {
-                mediaElement.play();
-            }
+        
+            // Pausar o vídeo atual antes de carregar o novo
+            mediaElement.pause();
+        
+            // Remover o atributo autoplay para evitar que o navegador tente tocar o vídeo automaticamente
+            mediaElement.removeAttribute('autoplay');
+        
+            // Esperar que o vídeo esteja pronto para tocar
+            mediaElement.oncanplay = () => {
+                if (qrCodeFw.audio_autoplay) {
+                    mediaElement.play().catch(error => {
+                        console.error('Erro ao tentar reproduzir o vídeo:', error);
+                    });
+                }
+            };
         };
 
         // Inicializar com a faixa correta

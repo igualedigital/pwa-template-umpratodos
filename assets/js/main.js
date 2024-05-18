@@ -4,13 +4,13 @@ qrCodeFw.subtitle = "Projeto Exemplo";
 qrCodeFw.description = "Template para projetos QRCode PWA - Bancadas acessíveis - UMPRATODOS.";
 
 // Determine abaixo o caminho relativo do webapp;
-qrCodeFw.base_dir = '/projetos/dev/template-pwa-bancada/';
+qrCodeFw.base_dir = '/dev/template-pwa-bancada/';
 qrCodeFw.appId = btoa(qrCodeFw.base_dir);
-qrCodeFw.version = '1.5.3';
+qrCodeFw.version = '1.5.6';
 
 // Configurações padrão e fallBack
 // Determine na variável abaixo: 1 para ativar o pwa | 0 = para não ativar o pwa.
-qrCodeFw.pwa_ready = 1;
+qrCodeFw.pwa_ready = 0;
 
 // Determine o autoplay em arquivos de audio.
 qrCodeFw.audio_autoplay = 1;

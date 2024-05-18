@@ -93,7 +93,7 @@ qrCodeFw.views.preloader = function() {
                             window.location.reload();
                         } else {
                             console.log('User dismissed the A2HS prompt');
-                            installButton.hide();
+                            window.location.reload();
                         }
                         window.deferredPrompt = null;
                         

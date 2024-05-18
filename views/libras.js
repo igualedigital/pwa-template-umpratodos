@@ -67,10 +67,21 @@ qrCodeFw.views.libras = function() {
             itemtitle.html(track.titulo);
             mediaElement.src = track.arquivo;
             updateBanner(track);
-
-            if (qrCodeFw.audio_autoplay) {
-                mediaElement.play();
-            }
+        
+            // Pausar o vídeo atual antes de carregar o novo
+            mediaElement.pause();
+        
+            // Remover o atributo autoplay para evitar que o navegador tente tocar o vídeo automaticamente
+            mediaElement.removeAttribute('autoplay');
+        
+            // Esperar que o vídeo esteja pronto para tocar
+            mediaElement.oncanplay = () => {
+                if (qrCodeFw.video_autoplay) {
+                    mediaElement.play().catch(error => {
+                        console.error('Erro ao tentar reproduzir o vídeo:', error);
+                    });
+                }
+            };
         };
 
         // Inicializar com a faixa correta

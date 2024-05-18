@@ -2,9 +2,9 @@
   "name": "Template PWA - Bancadas",
   "short_name": "Projeto Exemplo",
   "description": "Template para projetos QRCode PWA - Bancadas acessíveis - UMPRATODOS.",
-  "scope": "/projetos/dev/template-pwa-bancada/",
+  "scope": "/dev/template-pwa-bancada/",
   "id": "extensao-da-barragem-itaipu",
-  "start_url": "/projetos/dev/template-pwa-bancada/index.html",
+  "start_url": "/dev/template-pwa-bancada/index.html",
   "display": "fullscreen",
   "display_override": ["fullscreen", "standalone"],
   "orientation": "portrait",
@@ -13,34 +13,34 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/projetos/dev/template-pwa-bancada/assets/pwa/icon-72.png",
+      "src": "/dev/template-pwa-bancada/assets/pwa/icon-72.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "/projetos/dev/template-pwa-bancada/assets/pwa/icon-96.png",
+      "src": "/dev/template-pwa-bancada/assets/pwa/icon-96.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "/projetos/dev/template-pwa-bancada/assets/pwa/icon-144.png",
+      "src": "/dev/template-pwa-bancada/assets/pwa/icon-144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/projetos/dev/template-pwa-bancada/assets/pwa/icon-192.png",
+      "src": "/dev/template-pwa-bancada/assets/pwa/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/projetos/dev/template-pwa-bancada/assets/pwa/icon-512.png",
+      "src": "/dev/template-pwa-bancada/assets/pwa/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "/projetos/dev/template-pwa-bancada/assets/pwa/pwa-screenshot.png",
+      "src": "/dev/template-pwa-bancada/assets/pwa/pwa-screenshot.png",
       "type": "image/png",
       "sizes": "540x720"
     }

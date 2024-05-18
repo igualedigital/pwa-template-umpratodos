@@ -8,7 +8,7 @@ qrCodeFw.views.home = function(){
         // [+] configuração do webapp
         let clickCount = 0;
         const clickLimit = 5;
-        const clickInterval = 1000; // 1 segundo para resetar o contador
+        const clickInterval = 500; // 1/2 segundo para resetar o contador
         let lastClickTime = 0;
 
     $('.home-view').on('click touchstart', function() {

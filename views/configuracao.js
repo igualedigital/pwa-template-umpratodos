@@ -2,6 +2,8 @@ qrCodeFw.views = {};
 qrCodeFw.views.configuracao = function(){
 
     this.viewInit = function() {
+        
+
         const setting_webappid = $('.setting_webappid');
         const setting_webapp_title = $('.setting_webapp_title');
         const setting_webapp_basedir = $('.setting_webapp_basedir');
@@ -12,6 +14,30 @@ qrCodeFw.views.configuracao = function(){
         const setting_fullscreen_video = $('.cfg-list-flex.us_videos_autofullscreen .setting_status');
         const setting_appsaver = $('.cfg-list-flex.us_inactive_home_back_timer .setting_status');
     
+        const screenWidth = window.screen.width;
+        const screenHeight = window.screen.height;
+        $('.setting_screen_resolution').html(`<strong>${screenWidth}x${screenHeight}</strong>`);
+        
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        $('.setting_viewport_resolution').html(`<strong>${viewportWidth}x${viewportHeight}</strong>`);
+        
+        // Função para atualizar a resolução do viewport
+        function updateViewportResolution() {
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            $('.setting_viewport_resolution').html(`<strong>${viewportWidth}x${viewportHeight}</strong>`);
+        }
+
+        // Chama a função para inicializar a resolução do viewport
+        updateViewportResolution();
+
+        // Adiciona o evento resize para atualizar a resolução do viewport dinamicamente
+        $(window).on('resize', function() {
+            updateViewportResolution();
+        });
+
+
         console.log('%cwebapp->[Configuração]:', 'background: #F8FF09;color: #292922', 'success');
     
         setting_webapp_title.html('<strong>' + qrCodeFw.title + ' • ' + qrCodeFw.subtitle + '</strong>');
