@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+    <meta charset=utf-8 />
+    <title> </title>
+	<meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=3.0, user-scalable=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+	<!-- [+] plugins-->
+	<script src="assets/js/jquery/jquery.3.7.1.js"></script>
+	<!-- [-] plugins-->
+
+	<!-- [+]core -->
+		<script src="assets/js/class.MediaTracks.js"></script>
+		<script src="assets/js/conteudos.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/index.js"></script>
+		
+	<!-- [-]core-->
+
+	<!-- [+]webapp -->
+	
+	
+	<!-- [-]webapp-->
+
+	<script type="text/javascript">
+
+	$(document).ready(init);
+	// init webapp
+	function init(){
+		
+	var qrCodeInitializer = new qrCodeFw.initializer();
+	qrCodeInitializer.appStart();
+
+	var startPage = new qrCodeFw.qrCodeHome.index();
+	startPage.indexInit();
+
+
+	};
+
+	</script>
+
+	<link rel="icon" href="assets/pwa/icon-72.png" sizes="64x64" />
+	<link rel="icon" href="/assets/pwa/icon-192.png" sizes="192x192" />
+	<link rel="apple-touch-icon-precomposed" href="assets/pwa/icon-192.png" />
+	<meta name="msapplication-TileImage" content="assets/pwa/icon-192.png" />
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" href="/assets/pwa/icon-192.png">
+	<meta name="apple-mobile-web-app-title" content="Itaipu">
+
+	<link href="assets/css/style.css" type="text/css" media="all" rel="stylesheet" />
+	<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+	
+	
+</head>
+
+<body>
+
+	<div class="grid-left"></div>
+		
+	<div id="views" class="grid-webapp">
+
+		<div id="header-placeholder"></div>
+	
+		<main id="content-placeholder" aria-label="Conteúdo principal" data-content-loaded="">
+			<!-- view content -->
+		</main>
+
+	<div id="footer-placeholder"></div>
+	</div>
+	
+	<div class="grid-right"></div>
+
+</body>
+</html>

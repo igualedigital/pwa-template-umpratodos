@@ -1,0 +1,253 @@
+
+html {
+	font: 400 1em/1.4 var(--html-default-typeface);
+	font-size: var( --html-default-typeface-size);
+	text-rendering: optimizeLegibility;
+	color:var(--color-base-black);
+	background-color: var(--color-base-system);
+	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+	
+	}
+	
+body,html{
+	min-height: var(--html-default-height);
+}
+
+/* [+] webapp - Skeleton */
+body {
+	display: grid;
+	grid-template-columns: auto minmax( var(--viewport-min-width), var(--viewport-max-width)) auto;
+	grid-template-areas:
+		"grid-left grid-webapp grid-right";
+	/*margin: 0 1% 0 1%;*/
+	margin:iniital;
+	padding: iniital;
+	align-items: stretch;
+	align-content: stretch;
+	height: 100vh;
+}
+
+.grid-left,.grid-right{
+	background:transparent;
+}
+
+.grid-webapp{
+	background-color: var(--color-base-white);
+	width:100%;
+	max-height: 100vh;
+	height: 100vh;
+	width:100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	height: 100vh;
+}
+
+/*[+] header*/
+.grid-webapp header{
+	display: grid;
+	grid-template-columns: 50px 1fr 50px;
+	/* gap:50px; */
+	align-items: stretch;
+	justify-items: stretch;
+	height: 100px;
+	min-height: 120px;
+	max-height: 120px;
+	background: var(--color-black);
+	/* border-bottom:1px solid var(--color-neutral-200); */
+	/* background: red; */
+	justify-content: space-around;
+	align-content: stretch;
+}
+.grid-webapp header .hgrid-left{
+background: transparent;
+}
+.grid-webapp header .hgrid-center{
+
+	align-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.grid-webapp header .hgrid-right{
+background: transparent;
+}
+
+/*[-] header*/
+
+.grid-webapp main{
+	flex:1 auto;
+	overflow: auto;
+	/*padding: var(--html-default-margin);*/
+}
+
+
+.grid-webapp main section{
+	height: auto;
+	padding: var(--html-default-padding);
+}
+
+.grid-webapp main section.media{
+	height: 100%;
+	padding: var(--html-default-padding);
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	
+}
+
+.grid-webapp main .section-media{
+
+	background: transparent;
+}
+
+
+/* [+] Multitrack - Implementation */
+.grid-webapp main section.media-multitrack{
+	height: 100%;
+	padding: initial;
+	/* display: flex; */
+	justify-content: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	display: grid;
+	grid-template-columns: 120px 1fr 120px;
+	align-items: center;
+	gap:20px;
+}
+.grid-webapp main section.media-multitrack.section-texto {
+	/* background:red; */
+	align-items: start;
+}
+
+.grid-webapp main section.media-multitrack>.multritrack-navigation{
+	background:black!important;
+	height:100%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+/* [-] Multitrack - Implementation */
+
+/*[+] footer */
+
+.grid-webapp footer{
+	display: grid;
+	grid-template-columns: 50px 1fr 50px;
+	align-items: center;
+	height: 120px;
+	min-height: 120px;
+	max-height: 120px; /* Altere para 120px para consistência */
+	padding: initial;
+	margin: initial;
+	background-color: var(--color-black);
+	color: var(--color-base-white);
+}
+.grid-webapp footer .center-column {
+	display: flex;
+	justify-content: center;
+	gap: 60px; /* Espaçamento entre os itens na coluna central */
+}
+
+
+
+.grid-webapp footer ul{
+
+	background: transparent;
+	color: var(--color-base-white);
+	display: flex;
+	list-style: none;
+	height:64px;
+	padding:0;
+	justify-content: space-between;
+	align-items: center;
+	margin:0 16px 0 16px;
+
+}
+
+.grid-webapp footer a{
+	display:flex;
+	color: var(--color-base-white);
+	align-items: center;
+	border-radius: calc(var(--webapp-border-radius) - 2px);
+}
+
+.grid-webapp footer a:hover ,
+.grid-webapp footer a:hover >img  {
+	color:var(--color-base-black);
+	filter:initial;
+}
+.grid-webapp footer a:focus-visible{
+	color:var(--color-base-black);
+	filter:initial;
+	outline: 2px solid var(--webap-focus-outline);
+	
+}
+.grid-webapp footer a:focus-visible>img{
+	filter:initial;
+}
+
+
+.grid-webapp footer a img{
+	filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(152deg) brightness(103%) contrast(103%);
+}
+/*[-] footer */
+
+/*[+] view container */
+.view-container{
+height: 100%;
+}
+.view-container div{
+	padding: var(--html-default-padding);
+}
+/*[-] view container */
+
+/* [-] webapp - Skeleton */
+
+.appContainer{
+		background-color: var(--color-webapp-white);
+		display: flex;
+		-webkit-flex-flow: row wrap;
+		flex-flow: row wrap;
+		margin:0 auto;
+		width: 460px;
+	}	
+
+.appHome{
+	background: var(--color-base-white)!important;
+	display: flex!important;
+	align-content: stretch;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
+  }
+
+  .appHome-logo{
+	width:212px;
+	margin:0 0 56px 0;
+  }
+  .appHome-info,
+  .appHome-select,
+  .appHome-button{
+	  margin:var(--webapp-default-margin) 0 var(--webapp-default-margin) 0;
+  }
+
+
+/* [+] players */
+.native-player{
+	padding:5px;
+}
+
+.mplayer{
+	width:100%;
+	margin:0 auto;
+	margin: 40px auto;
+}
+/* [-] players */

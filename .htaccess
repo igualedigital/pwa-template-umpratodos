@@ -1,0 +1,35 @@
+# nega acesso aos arquivos .inc e ini
+<files *.ini>
+	order deny,allow
+	deny from all
+</files>
+	Options +MultiViews
+	
+	# remove a extensão para arquivos .php
+	<IfModule mod_rewrite.c>
+    Options +FollowSymLinks -MultiViews
+    RewriteEngine on
+
+	#RewriteBase /projetos/casa-do-braille/itaipu/barragem/
+    #RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-d
+    #RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}\.php -f
+    #RewriteRule ^(.*)$ $1.php [L]
+	
+	#RewriteBase /
+	#RewriteRule ^index\.php$ - [L]
+	#RewriteCond %{REQUEST_FILENAME} !-f
+	#RewriteCond %{REQUEST_FILENAME} !-d
+	#RewriteRule . /index.php [L]
+
+</IfModule>
+
+  ## Variaveis de ambiente
+  #SetEnv WEBAPP_DIRECTORY /projetos/casa-do-braille/itaipu/barragem/
+
+	#AuthType Basic
+	#AuthName "Acesso Restrito"
+	#AuthUserFile /var/www/.htpasswd
+	#Require valid-user
+	#login: umpratodos
+	#senha: umpratodos
+

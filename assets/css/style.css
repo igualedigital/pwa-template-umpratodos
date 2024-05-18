@@ -1,0 +1,31 @@
+	/* default - loads */
+    @charset "UTF-8";
+    
+    /* normalize.css - reset default browser css */
+	@import 'normalize.css';
+     
+    /* fonts */
+    @import 'fonts.css';
+
+	 /* root */
+    @import 'root.css';
+
+    /* webapp*/
+    @import 'webapp.css';
+    @import 'components.css';
+    @import 'views.css';
+
+     /* Custom theme for expo
+        Altere somente este arquivo para personalizar (fonte, cores e formas no webapp)
+        @import 'main-theme.css';
+        
+     */
+
+     @import 'webapp.default.theme.css';
+    
+
+    /* DEV CSS */
+    /*
+     @import 'dev.css';
+     */
+    

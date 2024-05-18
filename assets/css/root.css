@@ -1,0 +1,175 @@
+/*
+
+Define all global css webapp vars.
+
+*/
+:root {
+
+  /* [+] Color schema => colors: Defaults*/
+
+  --color-base-system:rgb(33, 34, 36);
+  --color-black:rgb(0, 0, 0);
+  --color-white:rgb(255, 255, 255);
+
+  --color-base-black: rgb(27, 27, 27);
+  --color-base-white: rgb(255, 255, 255);
+
+  --color-webapp-black: var(--color-base-black);
+  --color-webapp-white: var(--color-base-white);
+
+  --color-neutral-50: rgb(250, 250, 250);
+  --color-neutral-50-fg: var(--base-black);
+
+  --color-neutral-100: rgb(244, 244, 245);
+  --color-neutral-100-fg: var(--base-black);
+
+  --color-neutral-200: rgb(227, 227, 232);
+  --color-neutral-200-fg: var(--base-black);
+
+  --color-neutral-300: rgb(212, 212, 216);
+  --color-neutral-300-fg: var(--base-black);
+
+  --color-neutral-400: rgb(161, 161, 170);
+  --color-neutral-400-fg: var(--base-black);
+
+  --color-neutral-500: rgb(113, 113, 122);
+  --color-neutral-500-fg: var(--base-white);
+
+  --color-neutral-600: rgb(82, 82, 91);
+  --color-neutral-600-fg: var(--base-white);
+
+  --color-neutral-700: rgb(63, 63, 70);
+  --color-neutral-700-fg: var(--base-white);
+
+  --color-neutral-800: rgb(39, 39, 42);
+  --color-neutral-800-fg: var(--base-white);
+
+  --color-neutral-900: rgb(24, 24, 27);
+  --color-neutral-900-fg: var(--base-white);
+
+  --color-success-base:rgb(41, 130, 59);
+  --color-success-light:rgb(235, 242, 235);
+
+  --color-warning-base:rgb(233, 161, 0);
+  --color-warning-light:rgb(253, 246, 229);
+
+  --color-error-base:rgb(220, 32, 32);
+  --color-error-light:rgb(252, 234, 234);
+
+
+  /* [-] Color schema => colors: Defaults*/
+
+  /* [+] Color schema => colors: Branding */
+
+  --cor-principal: rgb(238 64 35);
+  --cor-alternativa-1: rgb(255 193 14);
+  --cor-alternativa-2: rgb(0 119 191);
+  --cor-alternativa-2-hover: rgb(31, 131, 193);
+  --cor-alternativa-3: rgb(0 167 80);
+  --cor-disabled-text:rgb(255 255 255 / 53%);
+  --cor-disabled-border:rgb(0 0 0 / 15%);
+  --cor-disabled-element:rgb(0 0 0 / 32%);
+
+  --color-branding-50: rgb(228, 235, 235);
+  --color-branding-50-fg: var(--base-black);
+
+  --color-branding-100: rgb(221, 227, 227);
+  --color-branding-100-fg: var(--base-black);
+
+  --color-branding-200: rgb(187, 199, 199);
+  --color-branding-200-fg: var(--base-black);
+
+  --color-branding-300: rgb(152, 172, 170);
+  --color-branding-300-fg:var(--base-black);
+
+  --color-branding-400: rgb(118, 144, 142);
+  --color-branding-400-fg: var(--base-black);
+
+  --color-branding-500: rgb(84, 116, 114);
+  --color-branding-500-fg: var(--base-white);
+
+  --color-branding-600: rgb(67, 93, 91);
+  --color-branding-600-fg: var(--base-white);
+
+  --color-branding-700: rgb(50, 70, 68);
+  --color-branding-700-fg: var(--base-white);
+
+  --color-branding-800: rgb(34, 46, 46);
+  --color-branding-800-fg: var(--base-white);
+
+  --color-branding-900: rgb(17, 23, 23);
+  --color-branding-900-fg: var(--base-white);
+  
+
+  /* [-] Color schema => colors: Branding */
+
+  /* [+] TypeFaces*/
+
+  --webapp-font-family: 'Trebuchet','Roboto Flex','Roboto','Arial','Open Sans',sans-serif;
+    
+  /* [-] TypeFaces*/
+
+  /* [+] Html defaults*/
+
+  --html-dafault-text-color: var(--color-base-black);
+  --html-dafault-bg-color: var(--color-webapp-white);
+  --html-default-typeface: var(--webapp-font-family);
+  --html-default-typeface-size: 16px;
+  --html-default-aparence: none;
+  --html-default-border-radius: 6px;
+  --html-default-margin: 16px;
+  --html-default-padding: 16px;
+  --html-default-height:100vh;
+
+  --transition-speed: 200ms;
+
+  --viewport-min-width: 375px;
+  --viewport-max-width: 1024px;
+
+  --image-default-width:100%;
+  --image-default-height:100%;
+
+
+  /* [-] Html defaults*/
+
+  /* [+] webapp defaults*/
+
+  --webapp-margin: 16px;
+  --webapp-padding:16px;
+  --webapp-border-radius: var(--html-default-border-radius);
+  --webapp-focus-color:rgb(255, 181, 73);
+  --webap-focus-outline:rgb(255, 181, 73);
+
+  /* [-] webapp defaults*/
+}
+
+* {
+
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  transition: var(--transition-speed);
+}
+
+/* [+] set html global defaults*/
+.flex-lock{
+  flex: 1;
+}
+.cls{
+  clear:both; 
+  height:0; 
+  width:0; 
+  margin:0;
+  padding:0;
+}
+a {
+  text-decoration: var(--default-a-text-decoration)
+}
+p{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+/* [-] set html global defaults */

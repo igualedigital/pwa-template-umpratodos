@@ -1,0 +1,8 @@
+/* Default font-set*/
+
+	/*Inter*/
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+	/*Roboto*/
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+	/*Roboto Flex*/
+	@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500&display=swap');

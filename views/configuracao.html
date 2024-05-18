@@ -1,0 +1,112 @@
+
+<section id="configuracao"  class="configuracao">
+    <style>
+        .radio-group {
+            
+            width: 20%;
+        }
+        .radio-group label {
+            display: block;
+            margin: 5px 0;
+        }
+    </style>
+<div class="flex-home">
+
+
+<div class="component-container text">
+    <h1>Configurações do PWA</h1>
+</div>
+
+<div class="component-container ">
+<div id="component-card" class="component-card">
+    <div class="content">
+        <p>Título: <span class="setting_webapp_title"><strong>Barbosa Layouts</strong></span></p>
+        <p><small>WebApp ID: <span class="setting_webappid"><strong>Barbosa Layouts</strong></span></small> | Versão: <span class="setting_webapp_version">1.0.0</span></p>
+        <p><small>Diretório Base: <span class="setting_webapp_basedir">Barbosa Layouts</span></small></p>
+    </div>
+</div>
+</div>
+<div class="component-container">
+
+    <ul id="settings-list" class="component-cfg-list"> 
+        <!-- [+]itens --> 
+         <li>          
+            <div class="cfg-list-flex us_audio_autoplay">                  
+                <div class="content">                      
+                    <p class="txt_subtitle3">Autoexecução de arquivos de Áudio.</p>                      
+                    <p class="txt_body">Configuração atual: <strong><span class="setting_status">-</span></strong></p>                  
+                </div>              
+                <input type="checkbox" id="chb_us_audio_autoplay"  value="1">       
+            </div>      
+        </li>  
+        <!-- [-]itens -->
+
+         <!-- [+]itens --> 
+         <li>          
+            <div class="cfg-list-flex us_video_autoplay">                  
+                <div class="content">                      
+                    <p class="txt_subtitle3">Autoexecução de arquivos de Vídeo.</p>                      
+                    <p class="txt_body">Configuração atual: <strong><span class="setting_status">-</span></strong></p>                
+                </div>              
+                <input type="checkbox" id="chb_us_video_autoplay" value="1" >       
+            </div>      
+        </li>  
+        <!-- [-]itens -->
+
+        <!-- [+]itens --> 
+        <li>          
+            <div class="cfg-list-flex us_videos_autofullscreen">                  
+                <div class="content">                      
+                    <p class="txt_subtitle3">Executar Vídeos automaticamente em modo Tela Cheia (Full Screen).</p>                      
+                    <p class="txt_body">Configuração atual: <strong><span class="setting_status">-</span></strong></p>                
+                </div>              
+                <input type="checkbox" id="chb_us_videos_autofullscreen" value="1">       
+            </div>      
+        </li>  
+        <!-- [-]itens -->
+
+        <!-- [+]itens --> 
+        <li>          
+            <div class="cfg-list-flex us_inactive_home_back_timer">                   
+                <div class="content">                      
+                    <p class="txt_subtitle3">Retornar automaticamente a tela inicial quando não houver nenhuma atividade por tempo determinado.</p>                      
+                    <p class="txt_body">Configuração atual: <strong><span class="setting_status">-</span></strong> </p>                
+                </div>              
+                <div class="radio-group timerSettings">
+                    <label>
+                        <input type="radio" name="timer" value="0"> Inativo
+                    </label>
+                    <label>
+                        <input type="radio" name="timer" value="10000"> 10 segundos
+                    </label>
+                    <label>
+                        <input type="radio" name="timer" value="30000"> 30 segundos
+                    </label>
+                    <label>
+                        <input type="radio" name="timer" value="60000"> 1 minuto
+                    </label>
+                    <label>
+                        <input type="radio" name="timer" value="300000"> 5 minutos
+                    </label>
+                    <label>
+                        <input type="radio" name="timer" value="600000"> 10 minutos
+                    </label>
+                    <label>
+                        <input type="radio" name="timer" value="1800000"> 30 minutos
+                    </label>
+                </div>    
+            </div>       
+        </li>  
+        <!-- [-]itens -->
+
+    </ul>
+</div>
+
+<div class="component-container update_button"  >
+    <button id="btn_update" class="button-primary" style="width: 50%; margin: 0 auto;">ATUALIZAR E SAIR</button>
+</div>
+
+</section>
+
+
+		
