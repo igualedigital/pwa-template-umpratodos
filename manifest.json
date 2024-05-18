@@ -5,10 +5,12 @@
   "scope": "/projetos/dev/template-pwa-bancada/",
   "id": "extensao-da-barragem-itaipu",
   "start_url": "/projetos/dev/template-pwa-bancada/index.html",
-  "display": "standalone",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
   "orientation": "portrait",
   "theme_color": "#000000",
   "background_color": "#000000",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/projetos/dev/template-pwa-bancada/assets/pwa/icon-72.png",
