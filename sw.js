@@ -4,7 +4,7 @@ if (workbox) {
     console.log(`[Workbox] carregado!`);
 
     const base_dir = '/dev/template-pwa-bancada/';
-    const rev_val = 1;
+    const rev_val = 2;
 
     workbox.core.setCacheNameDetails({
         prefix: btoa(base_dir),

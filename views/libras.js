@@ -5,7 +5,7 @@ qrCodeFw.views.libras = function() {
         console.log('View LIBRAS - loaded');
 
         // Adicione as faixas de vídeo
-       const VideoTracks = qrCodeFw.conteudo; // Conteudo de LIBRAS (video .mp4)
+        const VideoTracks = qrCodeFw.conteudo; // Conteúdo de LIBRAS (vídeo .mp4)
 
         const mediaElement = document.getElementById('videoElm');
         const bannerElement = $('#component-card-image');
@@ -15,9 +15,6 @@ qrCodeFw.views.libras = function() {
         
         const itemtitle = $('.item-title');
         itemtitle.html('Audiodescrição template');
-
-
- 
 
         // Função para configurar eventos de tela cheia
         const setupFullscreenEvents = () => {
@@ -65,23 +62,33 @@ qrCodeFw.views.libras = function() {
         const loadTrack = (index) => {
             let track = VideoTracks.listarFaixas('video')[index];
             itemtitle.html(track.titulo);
-            mediaElement.src = track.arquivo;
-            updateBanner(track);
-        
-            // Pausar o vídeo atual antes de carregar o novo
+
+            // Pausar e redefinir o mediaElement antes de carregar um novo
             mediaElement.pause();
-        
-            // Remover o atributo autoplay para evitar que o navegador tente tocar o vídeo automaticamente
-            mediaElement.removeAttribute('autoplay');
-        
-            // Esperar que o vídeo esteja pronto para tocar
+            mediaElement.removeAttribute('src'); // Remove a fonte
+            mediaElement.load(); // Carrega o estado vazio para redefinir o elemento
+
+            // Define a nova fonte e carrega-a
+            mediaElement.src = track.arquivo;
+            mediaElement.load(); // Inicia o carregamento da nova fonte
+
+            // Adiciona um ouvinte para quando o media estiver pronto para ser reproduzido
             mediaElement.oncanplay = () => {
                 if (qrCodeFw.video_autoplay) {
-                    mediaElement.play().catch(error => {
-                        console.error('Erro ao tentar reproduzir o vídeo:', error);
-                    });
+                    const playPromise = mediaElement.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            // Reprodução automática começou com sucesso
+                            console.log('Reprodução automática começou');
+                        }).catch((error) => {
+                            // Lida com erros se a solicitação de reprodução foi interrompida ou falhou
+                            console.error('Erro durante a reprodução do media:', error);
+                        });
+                    }
                 }
             };
+
+            updateBanner(track);
         };
 
         // Inicializar com a faixa correta
@@ -96,8 +103,10 @@ qrCodeFw.views.libras = function() {
 
             setupFullscreenEvents();
 
-            if (qrCodeFw.audio_autoplay) {
-                mediaElement.play();
+            if (qrCodeFw.video_autoplay) {
+                mediaElement.play().catch((error) => {
+                    console.error('Erro durante a reprodução do media:', error);
+                });
             }
         } else {
             // Inicializar índice atual

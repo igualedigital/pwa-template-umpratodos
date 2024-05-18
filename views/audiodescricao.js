@@ -3,21 +3,18 @@ qrCodeFw.views = {};
 qrCodeFw.views.audiodescricao = function() {
 
     this.viewInit = function() {
-
         console.log('View audiodescrição - loaded');
 
-        const AudioTracks =  qrCodeFw.conteudo; // Conteudo de AD (audio .mp3)
+        const AudioTracks = qrCodeFw.conteudo; // Conteudo de AD (audio .mp3)
 
         const mediaElement = document.getElementById('audio');
         const bannerElement = $('#component-card-image');
         const bannerImageElement = $('.banner');
         const nav_next = $('#btn_next');
         const nav_prev = $('#btn_prev');
-        
         const itemtitle = $('.item-title');
-        itemtitle.html('Audiodescrição template');
 
-        
+        itemtitle.html('Audiodescrição template');
 
         // Função para atualizar o banner
         const updateBanner = (track) => {
@@ -33,25 +30,35 @@ qrCodeFw.views.audiodescricao = function() {
 
         // Função para carregar e tocar a faixa atual
         const loadTrack = (index) => {
-            let track = VideoTracks.listarFaixas('audio')[index];
+            let track = AudioTracks.listarFaixas('audio')[index];
             itemtitle.html(track.titulo);
-            mediaElement.src = track.arquivo;
-            updateBanner(track);
-        
-            // Pausar o vídeo atual antes de carregar o novo
+            console.log('this track:',track);
+            // Pausar e redefinir o mediaElement antes de carregar um novo
             mediaElement.pause();
-        
-            // Remover o atributo autoplay para evitar que o navegador tente tocar o vídeo automaticamente
-            mediaElement.removeAttribute('autoplay');
-        
-            // Esperar que o vídeo esteja pronto para tocar
+            mediaElement.removeAttribute('src'); // Remove a fonte
+            mediaElement.load(); // Carrega o estado vazio para redefinir o elemento
+
+            // Define a nova fonte e carrega-a
+            mediaElement.src = track.arquivo;
+            mediaElement.load(); // Inicia o carregamento da nova fonte
+
+            // Adiciona um ouvinte para quando o media estiver pronto para ser reproduzido
             mediaElement.oncanplay = () => {
                 if (qrCodeFw.audio_autoplay) {
-                    mediaElement.play().catch(error => {
-                        console.error('Erro ao tentar reproduzir o vídeo:', error);
-                    });
+                    const playPromise = mediaElement.play();
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            // Autoplay começou com sucesso
+                            console.log('Autoplay começou');
+                        }).catch((error) => {
+                            // Lida com erros se a solicitação de reprodução foi interrompida ou falhou
+                            console.error('Erro durante a reprodução do media:', error);
+                        });
+                    }
                 }
             };
+
+            updateBanner(track);
         };
 
         // Inicializar com a faixa correta
@@ -65,7 +72,9 @@ qrCodeFw.views.audiodescricao = function() {
             updateBanner(track);
 
             if (qrCodeFw.audio_autoplay) {
-                mediaElement.play();
+                mediaElement.play().catch((error) => {
+                    console.error('Erro durante a reprodução do media:', error);
+                });
             }
         } else {
             // Inicializar índice atual
