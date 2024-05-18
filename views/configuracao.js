@@ -155,7 +155,7 @@ qrCodeFw.views.configuracao = function(){
 
          // Evento para atualizar a página ao clicar no botão
     $('#btn_update').on('click', function() {
-        qrCodeFw.viewLoader('home');
+        window.location.reload();
     });
 
     }; // eof; init
