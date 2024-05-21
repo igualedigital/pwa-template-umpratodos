@@ -6,11 +6,11 @@ qrCodeFw.description = "Template para projetos QRCode PWA - Bancadas acessíveis
 // Determine abaixo o caminho relativo do webapp;
 qrCodeFw.base_dir = '/dev/template-pwa-bancada/';
 qrCodeFw.appId = btoa(qrCodeFw.base_dir);
-qrCodeFw.version = '1.6.0';
+qrCodeFw.version = '1.6.1';
 
 // Configurações padrão e fallBack
 // Determine na variável abaixo: 1 para ativar o pwa | 0 = para não ativar o pwa.
-qrCodeFw.pwa_ready = 0;
+qrCodeFw.pwa_ready = 1;
 
 // Determine o autoplay em arquivos de audio.
 qrCodeFw.audio_autoplay = 1;

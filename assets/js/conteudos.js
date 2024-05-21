@@ -27,19 +27,19 @@ qrCodeFw.conteudo = new ColecaoFaixas();
 // Lembre-se de adicionar os caminhos dos arquivos no serviceWorker (sw.js)
 
     qrCodeFw.conteudo.adicionarFaixa('Faixa AD Exemplo', 'sample.jpg', 'Descrição da imagem', 'sample.mp3', 'audio');
-    //qrCodeFw.conteudo.adicionarFaixa('Faixa AD Exemplo 1 sem banner', null, null, 'sample-1.mp3', 'audio');
-    //qrCodeFw.conteudo.adicionarFaixa('Faixa AD Exemplo 2', 'sample-2.jpg', 'Descrição da imagem 2', 'sample-2.mp3', 'audio');
-    //qrCodeFw.conteudo.adicionarFaixa('Faixa AD Exemplo 3', 'sample-3.jpg', 'Descrição da imagem 3', 'sample-3.mp3', 'audio');
+    qrCodeFw.conteudo.adicionarFaixa('Faixa AD Exemplo 1 sem banner', null, null, 'sample-1.mp3', 'audio');
+    qrCodeFw.conteudo.adicionarFaixa('Faixa AD Exemplo 2', 'sample-2.jpg', 'Descrição da imagem 2', 'sample-2.mp3', 'audio');
+    qrCodeFw.conteudo.adicionarFaixa('Faixa AD Exemplo 3', 'sample-3.jpg', 'Descrição da imagem 3', 'sample-3.mp3', 'audio');
     
 // VÍDEO
 
 // Adicione os vídeos com imagens de banners e descrição (Libras)
 // Lembre-se de adicionar os caminhos dos arquivos no serviceWorker (sw.js)
 
-    qrCodeFw.conteudo.adicionarFaixa('Faixa Libras Exemplo',  null, 'Descrição da imagem', 'sample-portrait.mp4', 'video');
+    //qrCodeFw.conteudo.adicionarFaixa('Faixa Libras Exemplo',  null, 'Descrição da imagem', 'sample-portrait.mp4', 'video');
     qrCodeFw.conteudo.adicionarFaixa('Faixa Libras Exemplo 1', null, 'Descrição da imagem 1', 'sample-1.mp4', 'video');
     qrCodeFw.conteudo.adicionarFaixa('Faixa Libras Exemplo 2',  null, 'Descrição da imagem 2', 'sample-2.mp4', 'video');
-    //qrCodeFw.conteudo.adicionarFaixa('Faixa Libras Exemplo 3',  null, 'Descrição da imagem 3', 'sample-3.mp4', 'video');
+    qrCodeFw.conteudo.adicionarFaixa('Faixa Libras Exemplo 3',  null, 'Descrição da imagem 3', 'sample-3.mp4', 'video');
 
 // TEXTO
 

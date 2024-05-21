@@ -93,6 +93,8 @@ if (workbox) {
 
         { url: base_dir + 'views/configuracao.html', revision: rev_val },
         { url: base_dir + 'views/configuracao.js', revision: rev_val },
+        { url: base_dir + 'views/changelog.html', revision: rev_val },
+        { url: base_dir + 'views/changelog.js', revision: rev_val },
 
         { url: base_dir + 'views/home.html', revision: rev_val },
         { url: base_dir + 'views/home.js', revision: rev_val },
