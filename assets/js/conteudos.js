@@ -47,6 +47,6 @@ qrCodeFw.conteudo = new ColecaoFaixas();
 // Lembre-se de adicionar os caminhos dos arquivos no serviceWorker (sw.js)
 
    qrCodeFw.conteudo.adicionarFaixa('Texto exemplo', 'sample.jpg', 'Descrição da imagem', 'sample.html', 'text');
-   qrCodeFw.conteudo.adicionarFaixa('Texto exemplo 1 sem banner', null, 'Descrição da imagem 1', 'sample-1.html', 'text');
-   qrCodeFw.conteudo.adicionarFaixa('Texto exemplo 2', 'sample-2.jpg', 'Descrição da imagem 2', 'sample-2.html', 'text');
+   //qrCodeFw.conteudo.adicionarFaixa('Texto exemplo 1 sem banner', null, 'Descrição da imagem 1', 'sample-1.html', 'text');
+   //qrCodeFw.conteudo.adicionarFaixa('Texto exemplo 2', 'sample-2.jpg', 'Descrição da imagem 2', 'sample-2.html', 'text');
    //qrCodeFw.conteudo.adicionarFaixa('Texto exemplo 3', 'sample-3.jpg', 'Descrição da imagem 3', 'sample-3.html', 'text');

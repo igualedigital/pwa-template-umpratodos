@@ -7,6 +7,7 @@ qrCodeFw.views.audiodescricao = function() {
 
         const AudioTracks = qrCodeFw.conteudo; // Conteudo de AD (audio .mp3)
 
+        const navigationBars = $('.multritrack-navigation');
         const mediaElement = document.getElementById('audio');
         const bannerElement = $('#component-card-image');
         const bannerImageElement = $('.banner');
@@ -15,6 +16,7 @@ qrCodeFw.views.audiodescricao = function() {
         const itemtitle = $('.item-title');
 
         itemtitle.html('Audiodescrição template');
+        navigationBars.hide();
 
         // Função para atualizar o banner
         const updateBanner = (track) => {
@@ -64,10 +66,45 @@ qrCodeFw.views.audiodescricao = function() {
         // Inicializar com a faixa correta
         if (AudioTracks.contarFaixas('audio') === 1) {
            
-           // $('#ad').removeClass('media-multitrack');
-            //$('.multritrack-navigation').remove();
-            nav_next.hide();
-            nav_prev.hide();
+          
+            // Controle de navegação para recursos com item único.
+            switch (qrCodeFw.exhibition_navigation_type) {
+                case 'none':
+                    // Remove barras e botões
+                      $('#ad').removeClass('media-multitrack');
+                      navigationBars.remove();
+                      console.log('case none:','Remove barras e botões');
+                    break;
+                case 'all':
+                    // Exibe barras e botões
+                    navigationBars.addClass('black-bg-important');
+                    console.log('case all:','Exibe barras e botões');
+                    navigationBars.show();
+                    nav_next.show();
+                    nav_prev.show();
+                    break;
+                case 'onlyBars':
+                    // Exibe somente as barras de navegação sem os botões
+                    navigationBars.addClass('black-bg-important');
+                    navigationBars.show();
+                    nav_next.hide();
+                    nav_prev.hide();
+                    console.log('case onlyBars:','Exibe somente as barras de navegação sem os botões');
+                    break;
+                case 'onlyButtons':
+                   // Exibe somente os botões de navegação e oculta as barras
+                   //$('.multritrack-navigation').css('background','transparent!important');
+                   navigationBars.addClass('transparent-bg-important');
+                   navigationBars.show();
+                   nav_next.show();
+                   nav_prev.show();
+                   
+
+                   console.log('case onlyButtons:','Exibe somente os botões de navegação e oculta as barras');
+                   break; 
+            };
+
+            
 
             let track = AudioTracks.listarFaixas('audio')[0];
             itemtitle.html(track.titulo);
@@ -83,13 +120,15 @@ qrCodeFw.views.audiodescricao = function() {
             // Inicializar índice atual
             let currentTrackIndex = 0;
 
+            navigationBars.addClass('black-bg-important');
+            navigationBars.show();
+            nav_next.show();
+            nav_prev.show();
+
             // Carregar a primeira faixa inicialmente
             loadTrack(currentTrackIndex);
 
             
-            nav_next.show();
-            nav_prev.show();
-
             // Event listener para o botão de próxima faixa
             nav_next.on('click', () => {
                 currentTrackIndex = (currentTrackIndex + 1) % AudioTracks.contarFaixas('audio');

@@ -364,11 +364,11 @@ select:focus-visible{
 .component-container.texto{
   margin: 20px;
   overflow: auto;
- 
+  max-height: 700px;
 }
-@media (max-width: 800px) {
+  @media (max-width: 800px) {
   .component-container.texto {
-    max-height: 70vh;
+     max-height: 70vh;
   }
 }
 
@@ -720,8 +720,8 @@ select:focus-visible{
   flex-wrap: nowrap;
   align-items: flex-start;
   justify-content: center;
-  width:100%;
-}
+  width: 80%;
+  }
 
 .component-cfg-list .cfg-list-flex{
   width:100%;

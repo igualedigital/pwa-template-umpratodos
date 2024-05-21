@@ -127,7 +127,7 @@ background: transparent;
 }
 
 .grid-webapp main section.media-multitrack>.multritrack-navigation{
-	background:black!important;
+	/* background:black!important; */
 	height:100%;
 	display:flex;
 	align-items: center;
@@ -251,3 +251,10 @@ height: 100%;
 	margin: 40px auto;
 }
 /* [-] players */
+
+.transparent-bg-important {
+    background: transparent !important; 
+}
+.black-bg-important {
+    background: var(--color-black);
+}

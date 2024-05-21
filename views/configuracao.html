@@ -21,9 +21,13 @@
 <div id="component-card" class="component-card">
     <div class="content">
         <p>Título: <span class="setting_webapp_title"><strong>Barbosa Layouts</strong></span></p>
-        <p><small>WebApp ID: <span class="setting_webappid"><strong>Barbosa Layouts</strong></span></small> | Versão: <span class="setting_webapp_version">1.0.0</span></p>
+        <p><small>WebApp ID: <span class="setting_webappid"><strong>Barbosa Layouts</strong></span></small> 
         <p><small>Diretório Base: <span class="setting_webapp_basedir">Barbosa Layouts</span></small></p>
-        <p><small>Resolução da Tela: <span class="setting_screen_resolution"></span></small> | <small>Resolução do viewport: <span class="setting_viewport_resolution"></span></small></p>
+        <p><small>Resolução da Tela: <span class="setting_screen_resolution"></span></small> 
+        <p><small>Resolução do viewport: <span class="setting_viewport_resolution"></span></small></p>
+        <div style="display: flex;flex-direction: row;align-content: center;justify-content: space-between;align-items: center;width: 100%;">
+        <p><small>Versão:</small></p>
+        <button id="appVersion" class="button-primary setting_webapp_version" style="width: auto;padding:2px;margin:2px;font-weight:100;">1.0.0</button>
     </div>
 </div>
 </div>
@@ -81,20 +85,46 @@
                         <input type="radio" name="timer" value="10000"> 10 segundos
                     </label>
                     <label>
-                        <input type="radio" name="timer" value="30000"> 30 segundos
+                        <input type="radio" name="timer_chb" value="30000"> 30 segundos
                     </label>
                     <label>
-                        <input type="radio" name="timer" value="60000"> 1 minuto
+                        <input type="radio" name="timer_chb" value="60000"> 1 minuto
                     </label>
                     <label>
-                        <input type="radio" name="timer" value="300000"> 5 minutos
+                        <input type="radio" name="timer_chb" value="300000"> 5 minutos
                     </label>
                     <label>
-                        <input type="radio" name="timer" value="600000"> 10 minutos
+                        <input type="radio" name="timer_chb" value="600000"> 10 minutos
                     </label>
                     <label>
-                        <input type="radio" name="timer" value="1800000"> 30 minutos
+                        <input type="radio" name="timer_chb" value="1800000"> 30 minutos
                     </label>
+                </div>    
+            </div>       
+        </li>  
+        <!-- [-]itens -->
+
+        <!-- [+]itens --> 
+        <li>          
+            <div class="cfg-list-flex us_exhibition_navigation_type">                   
+                <div class="content">                      
+                    <p class="txt_subtitle3">Tipo de exibição dos controles de navegação para recursos com conteúdo único (Próximo e anterior)</p>                      
+                    <p class="txt_body">Configuração atual: <strong><span class="setting_status">-</span></strong> </p>                
+                </div>              
+                <div class="radio-group navBarSettings">
+                    <label>
+                        <input type="radio" name="bars_chb" value="none"> Não exibir
+                    </label>
+                    <label>
+                        <input type="radio" name="bars_chb" value="all"> Barras e Botões
+                    </label>
+                    <label>
+                        <input type="radio" name="bars_chb" value="onlyBars"> Somente Barras
+                    </label>
+                    <label>
+                        <input type="radio" name="bars_chb" value="onlyButtons"> Somente Botões
+                    </label>
+                   
                 </div>    
             </div>       
         </li>  

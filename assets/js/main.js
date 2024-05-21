@@ -6,11 +6,11 @@ qrCodeFw.description = "Template para projetos QRCode PWA - Bancadas acessíveis
 // Determine abaixo o caminho relativo do webapp;
 qrCodeFw.base_dir = '/dev/template-pwa-bancada/';
 qrCodeFw.appId = btoa(qrCodeFw.base_dir);
-qrCodeFw.version = '1.5.6';
+qrCodeFw.version = '1.6.0';
 
 // Configurações padrão e fallBack
 // Determine na variável abaixo: 1 para ativar o pwa | 0 = para não ativar o pwa.
-qrCodeFw.pwa_ready = 1;
+qrCodeFw.pwa_ready = 0;
 
 // Determine o autoplay em arquivos de audio.
 qrCodeFw.audio_autoplay = 1;
@@ -35,11 +35,23 @@ qrCodeFw.videos_autofullscreen = 0;
 //qrCodeFw.inactive_home_back_timer = 300000; // 5 minutos.
 qrCodeFw.inactive_home_back_timer = 0; // inativo -> padrão
 
+/**
+ * Determina o tipo de exibição dos controles de navegação quando existe somente de 1 item por recurso
+ * none => Não exibe as barras nem os botões.
+ * all => exibe tanto a barra quanto os botões.
+ * onlyBars = exibe somente as barras sem os botões.
+ * onlyButtons = exibe somente os botões sem as barras.
+ */
+
+qrCodeFw.exhibition_navigation_type = 'onlyBars'; //(default)
+
+
 // Carrega as configurações do usuário do localStorage
 const user_audio_autoplay = localStorage.getItem(qrCodeFw.appId + '_audio_autoplay');
 const user_video_autoplay = localStorage.getItem(qrCodeFw.appId + '_video_autoplay');
 const user_videos_autofullscreen = localStorage.getItem(qrCodeFw.appId + '_video_fullscreen');
 const user_inactive_home_back_timer = localStorage.getItem(qrCodeFw.appId + '_inactive_home_back_timer');
+const user_exhibition_navigation_type = localStorage.getItem(qrCodeFw.appId + '_exhibition_navigation_type');
 
 // Sobrescreve as configurações padrão com as configurações do usuário, se existirem
 if (user_audio_autoplay !== null) {
@@ -56,6 +68,9 @@ if (user_videos_autofullscreen !== null) {
 
 if (user_inactive_home_back_timer !== null) {
     qrCodeFw.inactive_home_back_timer = parseInt(user_inactive_home_back_timer, 10);
+}
+if (user_exhibition_navigation_type !== null) {
+    qrCodeFw.exhibition_navigation_type  = user_exhibition_navigation_type;
 }
 
 

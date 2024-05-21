@@ -12,10 +12,15 @@ qrCodeFw.views.configuracao = function(){
         const setting_autoplay_audio = $('.cfg-list-flex.us_audio_autoplay .setting_status');
         const setting_autoplay_video = $('.cfg-list-flex.us_video_autoplay .setting_status');
         const setting_fullscreen_video = $('.cfg-list-flex.us_videos_autofullscreen .setting_status');
+        const settings_exhibition_navigation_type = $('.cfg-list-flex.us_exhibition_navigation_type .setting_status')
+
         const setting_appsaver = $('.cfg-list-flex.us_inactive_home_back_timer .setting_status');
     
         const screenWidth = window.screen.width;
         const screenHeight = window.screen.height;
+
+        console.log('%cwebapp->[Configuração]:', 'background: #F8FF09;color: #292922', 'success');
+
         $('.setting_screen_resolution').html(`<strong>${screenWidth}x${screenHeight}</strong>`);
         
         const viewportWidth = window.innerWidth;
@@ -38,8 +43,6 @@ qrCodeFw.views.configuracao = function(){
         });
 
 
-        console.log('%cwebapp->[Configuração]:', 'background: #F8FF09;color: #292922', 'success');
-    
         setting_webapp_title.html('<strong>' + qrCodeFw.title + ' • ' + qrCodeFw.subtitle + '</strong>');
         setting_webappid.html('<strong>' + qrCodeFw.appId + '</strong>');
         setting_webapp_basedir.html('<strong>' + qrCodeFw.base_dir + '</strong>');
@@ -50,7 +53,8 @@ qrCodeFw.views.configuracao = function(){
             audio_autoplay: qrCodeFw.audio_autoplay,
             video_autoplay: qrCodeFw.video_autoplay,
             videos_autofullscreen: qrCodeFw.videos_autofullscreen,
-            inactive_home_back_timer: qrCodeFw.inactive_home_back_timer
+            inactive_home_back_timer: qrCodeFw.inactive_home_back_timer,
+            exhibition_navigation_type : qrCodeFw.exhibition_navigation_type
         };
     
         // Função para carregar configuração ou definir padrão
@@ -60,15 +64,17 @@ qrCodeFw.views.configuracao = function(){
                 localStorage.setItem(key, defaultValue);
                 return defaultValue;
             }
-            return parseInt(value, 10);
+            return value;
         }
     
         // Carrega as configurações do localStorage ou define os valores padrão
-        const us_audio_autoplay = loadSetting(qrCodeFw.appId + '_audio_autoplay', defaultSettings.audio_autoplay);
-        const us_video_autoplay = loadSetting(qrCodeFw.appId + '_video_autoplay', defaultSettings.video_autoplay);
-        const us_videos_autofullscreen = loadSetting(qrCodeFw.appId + '_video_fullscreen', defaultSettings.videos_autofullscreen);
-        const us_inactive_home_back_timer = loadSetting(qrCodeFw.appId + '_inactive_home_back_timer', defaultSettings.inactive_home_back_timer);
-    
+        const us_audio_autoplay = loadSetting(qrCodeFw.appId + '_audio_autoplay', parseInt(defaultSettings.audio_autoplay,10));
+        const us_video_autoplay = loadSetting(qrCodeFw.appId + '_video_autoplay', parseInt(defaultSettings.video_autoplay,10));
+        const us_videos_autofullscreen = loadSetting(qrCodeFw.appId + '_video_fullscreen', parseInt(defaultSettings.videos_autofullscreen,10));
+        const us_inactive_home_back_timer = loadSetting(qrCodeFw.appId + '_inactive_home_back_timer', parseInt(defaultSettings.inactive_home_back_timer,10));
+        const us_exhibition_navigation_type = loadSetting(qrCodeFw.appId + '_exhibition_navigation_type', qrCodeFw.exhibition_navigation_type);
+       
+
         // Atualiza a UI com as configurações carregadas
         function updateSettingUI(selector, value, activeText, inactiveText) {
             const element = $(selector);
@@ -84,13 +90,32 @@ qrCodeFw.views.configuracao = function(){
         updateSettingUI('#chb_us_video_autoplay', us_video_autoplay, 'Ativo', 'Inativo');
         updateSettingUI('#chb_us_videos_autofullscreen', us_videos_autofullscreen, 'Ativo', 'Inativo');
         updateSettingUI('.cfg-list-flex.us_inactive_home_back_timer .radio-group input[type="radio"]', us_inactive_home_back_timer);
+        updateSettingUI('.cfg-list-flex.us_exhibition_navigation_type .radio-group input[type="radio"]', us_exhibition_navigation_type);
     
-        if (us_inactive_home_back_timer === 0) {
+        if (us_inactive_home_back_timer == 0) {
             setting_appsaver.html('Inativo');
         } else {
             setting_appsaver.html('Ativo');
         }
-    
+        
+
+        switch (us_exhibition_navigation_type) {
+            case 'none':
+                settings_exhibition_navigation_type.html('Não exibir.');
+                break;
+            
+            case 'all':
+                settings_exhibition_navigation_type.html('Barras e Botões');
+                break;
+            case 'onlyBars':
+                settings_exhibition_navigation_type.html('Somente as barras.');
+                break;
+            case 'onlyButtons':
+                settings_exhibition_navigation_type.html('Somente os botões.');
+                break;
+          
+        };
+        
         // Evento para alterar configuração de audio autoplay
         $('.us_audio_autoplay').on('click', function() {
             var checkbox = $('#chb_us_audio_autoplay');
@@ -139,6 +164,33 @@ qrCodeFw.views.configuracao = function(){
             }
         });
     
+        
+        // Evento para alterar configuração do tipo de exbição dos controles.
+        $('.cfg-list-flex.us_exhibition_navigation_type .radio-group input[type="radio"]').on('change', function() {
+            var selectedValue = $(this).val();
+            var storageKey = qrCodeFw.appId + '_exhibition_navigation_type';
+    
+            switch (selectedValue) {
+                case 'none':
+                    localStorage.setItem(storageKey, selectedValue);
+                    settings_exhibition_navigation_type.html('Não exibir');
+                    break;
+                case 'all':
+                    localStorage.setItem(storageKey, selectedValue);
+                    settings_exhibition_navigation_type.html('Barras e Botões');
+                    break;
+                case 'onlyBars':
+                    localStorage.setItem(storageKey, selectedValue);
+                    settings_exhibition_navigation_type.html('Somente as barras.');
+                    break;
+                case 'onlyButtons':
+                    localStorage.setItem(storageKey, selectedValue);
+                    settings_exhibition_navigation_type.html('Somente os botões.');
+                    break;
+              
+            };
+        });
+
         // Evento para alterar configuração de inactive home back timer
         $('.cfg-list-flex.us_inactive_home_back_timer .radio-group input[type="radio"]').on('change', function() {
             var selectedValue = $(this).val();
@@ -156,6 +208,11 @@ qrCodeFw.views.configuracao = function(){
          // Evento para atualizar a página ao clicar no botão
     $('#btn_update').on('click', function() {
         window.location.reload();
+    });
+
+    // Abre o changlog
+    $('#appVersion').on('click', function() {
+        qrCodeFw.viewLoader('changelog');
     });
 
     }; // eof; init

@@ -7,6 +7,7 @@ qrCodeFw.views.libras = function() {
         // Adicione as faixas de vídeo
         const VideoTracks = qrCodeFw.conteudo; // Conteúdo de LIBRAS (vídeo .mp4)
 
+        const navigationBars = $('.multritrack-navigation');
         const mediaElement = document.getElementById('videoElm');
         const bannerElement = $('#component-card-image');
         const bannerImageElement = $('.banner');
@@ -14,6 +15,8 @@ qrCodeFw.views.libras = function() {
         const nav_prev = $('#btn_prev');
         
         const itemtitle = $('.item-title');
+        navigationBars.hide();
+
         itemtitle.html('Audiodescrição template');
 
         // Função para configurar eventos de tela cheia
@@ -93,10 +96,43 @@ qrCodeFw.views.libras = function() {
 
         // Inicializar com a faixa correta
         if (VideoTracks.contarFaixas('video') === 1) {
-           // $('#libras').removeClass('media-multitrack');
-            //$('.multritrack-navigation').remove();
-            nav_next.hide();
-            nav_prev.hide();
+        
+             // Controle de navegação para recursos com item único.
+             switch (qrCodeFw.exhibition_navigation_type) {
+                case 'none':
+                    // Remove barras e botões
+                      $('#libras').removeClass('media-multitrack');
+                      navigationBars.remove();
+                      console.log('case none:','Remove barras e botões');
+                    break;
+                case 'all':
+                    // Exibe barras e botões
+                    navigationBars.addClass('black-bg-important');
+                    console.log('case all:','Exibe barras e botões');
+                    navigationBars.show();
+                    nav_next.show();
+                    nav_prev.show();
+                    break;
+                case 'onlyBars':
+                    // Exibe somente as barras de navegação sem os botões
+                    navigationBars.addClass('black-bg-important');
+                    navigationBars.show();
+                    nav_next.hide();
+                    nav_prev.hide();
+                    console.log('case onlyBars:','Exibe somente as barras de navegação sem os botões');
+                    break;
+                case 'onlyButtons':
+                   // Exibe somente os botões de navegação e oculta as barras
+                   //$('.multritrack-navigation').css('background','transparent!important');
+                   navigationBars.addClass('transparent-bg-important');
+                   navigationBars.show();
+                   nav_next.show();
+                   nav_prev.show();
+                   
+
+                   console.log('case onlyButtons:','Exibe somente os botões de navegação e oculta as barras');
+                   break; 
+            };
 
             let track = VideoTracks.listarFaixas('video')[0];
             itemtitle.html(track.titulo);
@@ -113,6 +149,11 @@ qrCodeFw.views.libras = function() {
         } else {
             // Inicializar índice atual
             let currentTrackIndex = 0;
+            
+            navigationBars.addClass('black-bg-important');
+            navigationBars.show();
+            nav_next.show();
+            nav_prev.show();
 
             // Carregar a primeira faixa inicialmente
             loadTrack(currentTrackIndex);
