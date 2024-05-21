@@ -93,8 +93,10 @@ qrCodeFw.views.libras = function() {
 
         // Inicializar com a faixa correta
         if (VideoTracks.contarFaixas('video') === 1) {
-            $('#libras').removeClass('media-multitrack');
-            $('.multritrack-navigation').remove();
+           // $('#libras').removeClass('media-multitrack');
+            //$('.multritrack-navigation').remove();
+            nav_next.hide();
+            nav_prev.hide();
 
             let track = VideoTracks.listarFaixas('video')[0];
             itemtitle.html(track.titulo);
@@ -114,6 +116,9 @@ qrCodeFw.views.libras = function() {
 
             // Carregar a primeira faixa inicialmente
             loadTrack(currentTrackIndex);
+
+            nav_next.show();
+            nav_prev.show();
 
             // Event listener para o botão de próxima faixa
             nav_next.on('click', () => {

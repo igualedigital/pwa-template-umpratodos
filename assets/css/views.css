@@ -26,12 +26,16 @@ dev: chiavegatti@gmail.com
 	width:100%;
 }
 
+.home-view .splash-home-view{
+	justify-content: center!important;
+}
 .home-view .splash{
 	align-self: center;
 	/* max-width: 80%; */
 	margin-bottom:56px;
 	/* background: red; */
 	width: 80%;
+	
 }
 .splash img{
 	width:100%;

@@ -63,8 +63,11 @@ qrCodeFw.views.audiodescricao = function() {
 
         // Inicializar com a faixa correta
         if (AudioTracks.contarFaixas('audio') === 1) {
-            $('#ad').removeClass('media-multitrack');
-            $('.multritrack-navigation').remove();
+           
+           // $('#ad').removeClass('media-multitrack');
+            //$('.multritrack-navigation').remove();
+            nav_next.hide();
+            nav_prev.hide();
 
             let track = AudioTracks.listarFaixas('audio')[0];
             itemtitle.html(track.titulo);
@@ -82,6 +85,10 @@ qrCodeFw.views.audiodescricao = function() {
 
             // Carregar a primeira faixa inicialmente
             loadTrack(currentTrackIndex);
+
+            
+            nav_next.show();
+            nav_prev.show();
 
             // Event listener para o botão de próxima faixa
             nav_next.on('click', () => {
