@@ -1,6 +1,11 @@
 <!DOCTYPE html>
+
 <?php 
  include('functions.php');
+ $infoPwa = getPwaInfo();
+
+ 
+
  ?>
 <html lang="en">
 <head>
@@ -27,24 +32,25 @@
         <p>Escolha uma opção no menu para adicionar conteúdo.</p>
 
          <!-- [+]Card com informações do PWA -->
-         <?php
-        $infoPwa = getPwaInfo();
-        ?>
+        
         <div class="card mt-4">
           <div class="card-header">
-          <?= $infoPwa['Titulo'] ?>
+          <?= $infoPwa['titulo'] ?>
           </div>
           <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted"><?= $infoPwa['Subtitulo'] ?></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><?= $infoPwa['sub-titulo'] ?></h6>
             <p class="card-text">
-              <strong>PWA ID:</strong> <span id="pwa-id"><?= $infoPwa['AppId'] ?></span><br>
-              <strong>Tamanho:</strong> <span id="pwa-size"><?= $infoPwa['Tamanho'] ?></span><br>
-              <strong>Diretório Base:</strong> <span id="pwa-base-directory"><?= $infoPwa['DiretorioBase'] ?></span><br>
-              <strong>Outras Informações:</strong> <span id="pwa-other-info"><?= $infoPwa['OutrasInformacoes'] ?></span>
+              <strong>PWA ID:</strong> <span id="pwa-id"><?= $infoPwa['app-id'] ?></span><br>
+              <strong>Tamanho:</strong> <span id="pwa-size"><?= $infoPwa['tamanho'] ?></span><br>
+              <strong>Diretório Base:</strong> <span id="pwa-base-directory"><?= $infoPwa['diretorio-base'] ?></span>
+              
             </p>
           </div>
         </div>
         <!-- [-]Card do pwa -->
+<br>
+        <h2>Conteúdos</h2>
+       
 
        <!-- [+]card conteúdo texto -->
        
@@ -68,9 +74,6 @@
         <!-- [-]card conteúdo texto -->
 
       
-        
-
-        
 
       </main>
     </div>
@@ -79,9 +82,30 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function(){
+
+
       $('.navbar-toggler').on('click', function() {
         $('.sidebar').toggleClass('active');
       });
+
+    // Submeter o formulário via AJAX
+          $('#pwaForm').on('submit', function(event) {
+            event.preventDefault();
+            
+            $.ajax({
+              url: 'save_details.php',
+              type: 'POST',
+              data: $(this).serialize(),
+              success: function(response) {
+                alert('Dados salvos com sucesso!');
+              },
+              error: function(xhr, status, error) {
+                alert('Erro ao salvar os dados.');
+              }
+            });
+          });
+
+
     });
   </script>
 </body>

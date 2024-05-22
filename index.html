@@ -13,6 +13,7 @@
 	<!-- [-] plugins-->
 
 	<!-- [+]core -->
+		<script src="assets/js/pwafw.js"></script>
 		<script src="assets/js/class.MediaTracks.js"></script>
 		<script src="assets/js/conteudos.js"></script>
 		<script src="assets/js/main.js"></script>
@@ -26,15 +27,15 @@
 	<!-- [-]webapp-->
 
 	<script type="text/javascript">
-
+	
 	$(document).ready(init);
 	// init webapp
 	function init(){
 		
-	var qrCodeInitializer = new qrCodeFw.initializer();
+	var qrCodeInitializer = new pwaFw.initializer();
 	qrCodeInitializer.appStart();
 
-	var startPage = new qrCodeFw.qrCodeHome.index();
+	var startPage = new pwaFw.qrCodeHome.index();
 	startPage.indexInit();
 
 

@@ -55,26 +55,41 @@ function generateAppId($directory) {
 }
 
 /**
- * Gera um array com as informações do PWA.
+ * Obtém informações principais do PWA.
  *
  * @return array As informações do PWA.
  */
 function getPwaInfo() {
-    
+    $jsonPath = BASE_DIR . DIRECTORY_SEPARATOR . 'cms' . DIRECTORY_SEPARATOR . 'projeto-pwa.json';
     $cmsDirectory = __DIR__;
     $sizeInBytes = calculateDirectorySize(BASE_DIR, $cmsDirectory);
     $formattedSize = formatSizeUnits($sizeInBytes);
     $appId = generateAppId(BASE_DIR);
 
-    return array(
-        'Titulo' => 'Meu PWA',
-        'Subtitulo' => 'Um exemplo de Progressive Web App',
-        'AppId' => $appId,
-        'Tamanho' => $formattedSize,
-        'DiretorioBase' => BASE_DIR,
-        'OutrasInformacoes' => 'Aqui vai mais informações relevantes'
+    // Valores padrão (fallback)
+    $defaultInfo = array(
+        'app-id' => $appId,
+        'titulo' => 'Novo PWA',
+        'sub-titulo' => 'Este é um novo projeto',
+        'descricao' => 'Clique em configurações e ajuste as informações',
+        'estado-pwa' => 0,
+        'diretorio-base' => BASE_DIR,
+        'tamanho' => $formattedSize,
+        'conteudo' => array()
     );
-};
+
+    // Verifica se o arquivo JSON existe e não está vazio
+    if (file_exists($jsonPath)) {
+        $jsonContent = file_get_contents($jsonPath);
+        $jsonData = json_decode($jsonContent, true);
+
+        if ($jsonData && json_last_error() === JSON_ERROR_NONE) {
+            return array_merge($defaultInfo, $jsonData);
+        }
+    }
+
+    return $defaultInfo;
+}
 /**
  * Obtém o caminho completo para um diretório dentro da estrutura de armazenamento.
  *

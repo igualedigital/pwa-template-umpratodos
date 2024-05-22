@@ -1,4 +1,3 @@
-var qrCodeFw = {};
 // [+] MediaClass
  /**
  * Classe que representa uma faixa de mídia, contendo informações sobre título, imagem, descrição da imagem, arquivo e tipo.

@@ -1,8 +1,8 @@
 // JavaScript Document
 // Start page Home do projeto
-qrCodeFw.qrCodeHome = {};
+pwaFw.qrCodeHome = {};
 
-qrCodeFw.qrCodeHome.index = function(){
+pwaFw.qrCodeHome.index = function(){
 
 	this.indexInit = function(){
 

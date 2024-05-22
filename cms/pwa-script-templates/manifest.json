@@ -1,0 +1,48 @@
+{
+  "name": "@title",
+  "short_name": "@subtitle",
+  "description": "@description",
+  "scope": "@basedir",
+  "id": "@appid",
+  "start_url": "@basedirindex.html",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "portrait",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "@basedir/assets/pwa/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "@basedir/assets/pwa/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "@basedir/assets/pwa/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "@basedir/assets/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "@basedir/assets/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "@basedir/assets/pwa/pwa-screenshot.png",
+      "type": "image/png",
+      "sizes": "540x720"
+    }
+  ]
+}

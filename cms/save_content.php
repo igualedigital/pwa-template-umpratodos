@@ -35,11 +35,20 @@ function saveContent() {
     }
 
     // Atualizar o arquivo conteudo.js
-    $conteudoJsPath = 'conteudo.js';
-    $conteudoJs = file_get_contents($conteudoJsPath);
+    $conteudoJsPath = BASE_DIR . DIRECTORY_SEPARATOR . 'cms' . DIRECTORY_SEPARATOR . 'outputs' . DIRECTORY_SEPARATOR . 'conteudo.js';
 
-    $newContent = "qrCodeFw.conteudo.adicionarFaixa('$title', " . ($imageFile ? "'$imageFile'" : "null") . ", " . ($imageDescription ? "'$imageDescription'" : "null") . ", '$contentFile', '$type');\n";
+
+    // Verifica se o arquivo conteudo.js existe, se não, cria com conteúdo inicial
+    if (!file_exists($conteudoJsPath)) {
+    $conteudoJs = "pwaFw.conteudo = pwaFw.conteudo || {};\n\n";
+    $conteudoJs .= "pwaFw.conteudo = new ColecaoFaixas();\n\n";
+    } else {
+    $conteudoJs = file_get_contents($conteudoJsPath);
+    }
+
+    $newContent = "pwaFw.conteudo.adicionarFaixa('$title', " . ($imageFile ? "'$imageFile'" : "null") . ", " . ($imageDescription ? "'$imageDescription'" : "null") . ", '$contentFile', '$type');\n";
     $conteudoJs .= $newContent;
+
 
     file_put_contents($conteudoJsPath, $conteudoJs);
 
