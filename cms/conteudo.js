@@ -1,0 +1,14 @@
+qrCodeFw.conteudo.adicionarFaixa('meu novo vídeo', null, null, '5e3aba47-5981-4d81-9dd2-651d25b72719.mp4', 'video');
+qrCodeFw.conteudo.adicionarFaixa('Terra girando', null, null, 'c25e6220-bffe-4021-a6ed-256d7606580f.mp4', 'video');
+qrCodeFw.conteudo.adicionarFaixa('textao do inferno', null, null, '69add648-05bd-41b3-9c69-9eed8bced50d.html', 'text');
+qrCodeFw.conteudo.adicionarFaixa('Conteudo do xalau', '75f3d7a0-18e3-47f6-be7b-f6bbc43194ed.jpg', 'uma imagem de log', '9dee8935-ec8c-46e5-8b30-5de353690390.mp3', 'audio');
+qrCodeFw.conteudo.adicionarFaixa('Texto em markdown²', null, null, 'fd3f2d1a-bfda-4efc-827c-c3d371ea46b8.md', 'text');
+qrCodeFw.conteudo.adicionarFaixa('Um novo texto super nervoso.', null, null, '2e84c8e7-6a04-422f-b712-7e2878c80245.md', 'text');
+qrCodeFw.conteudo.adicionarFaixa('Parseado com o Parsedown ! Parça...', null, null, 'c4dba40a-0afc-47d7-a6c4-fe8a4b95be7a.html', 'text');
+qrCodeFw.conteudo.adicionarFaixa('Bolacheira do rancho', null, null, '5ed7ec43-6425-4a37-9ac0-67d08170c6bf.html', 'text');
+qrCodeFw.conteudo.adicionarFaixa('Meu texto do cabra safado.', 'a725d145-af2b-4aba-ad4d-e19bc61039c1.jpg', null, 'd5a146f2-51d2-441e-9c0a-1c3d25463df9.html', 'text');
+qrCodeFw.conteudo.adicionarFaixa('Que maravilha de texto horrivel', null, null, 'c3541208-daa1-4b32-9723-3192699fbd69.html', 'text');
+qrCodeFw.conteudo.adicionarFaixa('Teste de texto com FSN', null, null, 'e1866e74-f306-4551-8681-686fd1a705d5.html', 'text');
+qrCodeFw.conteudo.adicionarFaixa('Um belíssimo video de um cara tocando trombeta.', 'b8b0acd5-9e16-49e8-84c7-e1d47164b688.jpg', 'Que maravilha...', '93a35c7c-f0d4-44e4-a28f-fc7d3c55d2bb.mp4', 'video');
+qrCodeFw.conteudo.adicionarFaixa('Um som de arrepiar os cabelos do braço!', null, null, '9da96e11-ff87-4eda-895b-a1e03415691e.mp3', 'audio');
+qrCodeFw.conteudo.adicionarFaixa('Dadá cadê você, rapaz!', null, null, '921afc42-fa33-4953-ad5b-266a43b3e03e.mp3', 'audio');

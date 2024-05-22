@@ -11,9 +11,9 @@
     RewriteEngine on
 
 	#RewriteBase /projetos/casa-do-braille/itaipu/barragem/
-    #RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-d
-    #RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}\.php -f
-    #RewriteRule ^(.*)$ $1.php [L]
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-d
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}\.php -f
+    RewriteRule ^(.*)$ $1.php [L]
 	
 	#RewriteBase /
 	#RewriteRule ^index\.php$ - [L]
