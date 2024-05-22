@@ -108,5 +108,42 @@ function getStoragePath($directory) {
  */
 function getLastSegment($path) {
     return basename($path);
-}
+};
+
+/**
+ * Lê o conteúdo do arquivo conteudo.js e retorna um array com os conteúdos.
+ *
+ * @param string $type O tipo de conteúdo a ser filtrado (todos, video, audio, text).
+ * @return array A lista de conteúdos.
+ */
+function lerConteudo($type = 'todos') {
+    $conteudoJsPath = BASE_DIR . DIRECTORY_SEPARATOR . 'cms' . DIRECTORY_SEPARATOR . 'outputs' . DIRECTORY_SEPARATOR . 'conteudo.js';
+    
+    if (!file_exists($conteudoJsPath)) {
+        return array();
+    }
+
+    $conteudoJs = file_get_contents($conteudoJsPath);
+    $conteudos = array();
+
+    $pattern = "/pwaFw.conteudo.adicionarFaixa\('([^']*)',\s*([^,]*),\s*([^,]*),\s*'([^']*)',\s*'([^']*)'\);/";
+    preg_match_all($pattern, $conteudoJs, $matches, PREG_SET_ORDER);
+
+    foreach ($matches as $match) {
+        $conteudo = array(
+            'titulo' => $match[1],
+            'imagem' => $match[2] !== 'null' ? trim($match[2], "'") : null,
+            'descricao-da-imagem' => $match[3] !== 'null' ? trim($match[3], "'") : null,
+            'arquivo' => $match[4],
+            'tipo' => $match[5]
+        );
+
+        if ($type === 'todos' || $type === $conteudo['tipo']) {
+            $conteudos[] = $conteudo;
+        }
+    }
+
+    return $conteudos;
+};
+
 ?>

@@ -49,29 +49,60 @@
         </div>
         <!-- [-]Card do pwa -->
 <br>
-        <h2>Conteúdos</h2>
+        
        
 
-       <!-- [+]card conteúdo texto -->
-       
+       <!-- [+]card conteúdo -->
+       <?php
+        $c_conteudo = lerConteudo('todos');
+       // $c_texto = lerConteudo('text');
+       // $c_audio = lerConteudo('audio');
+       // $c_video = lerConteudo('video');
+      
+       ?>
+
+       <?php if ($c_conteudo) {?>
+        <h2>Conteúdos</h2>
        <div class="card mt-4">
   <div class="card-header">
-    Conteúdo em Texto
+   Conteúdo do PWA
   </div>
   <div class="card-body">
     <ol class="list-group list-group-numbered">
+    <?php foreach ($c_conteudo as $item): ?>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <div class="ms-2 me-auto">
-          <div>A Praia e o papagaio.</div>
+        <div>
+        <?php
+                switch ($item['tipo']) {
+                  case 'text':
+                    echo '<i class="fas fa-file-alt"></i> ';
+                    break;
+                  case 'audio':
+                    echo '<i class="fas fa-file-audio"></i> ';
+                    break;
+                  case 'video':
+                    echo '<i class="fas fa-file-video"></i> ';
+                    break;
+                  default:
+                    echo '<i class="fas fa-file"></i> ';
+                    break;
+                };
+                echo htmlspecialchars($item['titulo']);
+                ?>
+
+          </div>
         </div>
        
-          <button type="submit" class="btn btn-danger">Excluir</button>
-        
+          <button type="submit" class="btn btn-danger" data-arquivo="<?= htmlspecialchars($item['arquivo']); ?>">Excluir</button>
       </li>
+      <?php endforeach; ?>
     </ol>
   </div>
 </div>
-        <!-- [-]card conteúdo texto -->
+
+       <?php }; ?>
+        <!-- [-]card conteúdo -->
 
       
 
