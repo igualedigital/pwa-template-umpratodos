@@ -1,7 +1,10 @@
 # Ignore media files QRCode projects.
 
 #dev.docs
-storage
+storage/media/text/*
+storage/media/image/*
+storage/media/video/*
+storage/media/audio/*
 web.config
 dev-components.*
 teste.*
