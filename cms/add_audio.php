@@ -21,14 +21,14 @@
       </nav>
       <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <h2>Adicionar Áudio</h2>
-        <form action="save_content.php" method="post" enctype="multipart/form-data">
+        <form action="libs/save_content.php" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="title">Título</label>
             <input type="text" class="form-control" id="title" name="title" required>
           </div>
           <div class="form-group">
             <label for="image">Imagem</label>
-            <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+            <input type="file" class="form-control-file" id="imageFile" name="imageFile" accept="image/*">
             <img id="imagePreview" src="#" alt="Pré-visualização da Imagem" style="display: none;">
           </div>
           <div class="form-group">
@@ -37,7 +37,7 @@
           </div>
           <div class="form-group">
             <label for="audio">Áudio</label>
-            <input type="file" class="form-control-file" id="audio" name="audio" accept="audio/mp3" required>
+            <input type="file" class="form-control-file" id="contentFile" name="contentFile" accept="audio/mp3" required>
             <audio id="audioPreview" style="display: none;" controls></audio>
           </div>
           <input type="hidden" name="type" value="audio">

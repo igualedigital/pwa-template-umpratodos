@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 
 <?php 
- include('functions.php');
- $infoPwa = getPwaInfo();
+ include('libs/functions.php');
+ // $objInfo =  new pwaSettings();
 
-//$c_conteudo = lerConteudo('todos');
-$c_audio = lerConteudo('audio');
-$c_video = lerConteudo('video');
-$c_texto = lerConteudo('text');
+ $pwaSettings = new pwaSettings();
+ $infoPwa = $pwaSettings->getPwaInfo();
+
+$conteudo = new pwaContents();
+$c_audio = $conteudo->listarConteudo('audio');
+$c_video = $conteudo->listarConteudo('video');
+$c_texto = $conteudo->listarConteudo('text');
+
 
  ?>
 <html lang="en">

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 
 <?php 
- include('functions.php');
- $infoPwa = getPwaInfo();
+ include('libs/functions.php');
 
- 
+ $pwaSettings = new pwaSettings();
+ $infoPwa = $pwaSettings->getPwaInfo();
+
+$conteudo = new pwaContents();
+$lista_conteudo = $conteudo->listarConteudo('todos');
+
+
 
  ?>
 <html lang="en">
@@ -29,7 +34,7 @@
         <?php include('menu.php'); ?>
       </nav>
       <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
-        <h2>CMS do PWA (<?=getLastSegment(BASE_DIR) ?>)</h2>
+        <h2>CMS do PWA (<?=getLastSegment(PWA_DIR) ?>)</h2>
         <p>Gerencie as informações e conteúdos do PWA.</p>
 
          <!-- [+]Card com informações do PWA -->
@@ -55,14 +60,14 @@
 
        <!-- [+]card conteúdo -->
        <?php
-        $c_conteudo = lerConteudo('todos');
+       // $c_conteudo = lerConteudo('todos');
        // $c_texto = lerConteudo('text');
        // $c_audio = lerConteudo('audio');
        // $c_video = lerConteudo('video');
      
        ?>
 
-       <?php if ($c_conteudo) {?>
+       <?php if ($lista_conteudo) {?>
         <hr>
        <div class="card mt-4">
   <div class="card-header">
@@ -70,7 +75,7 @@
   </div>
   <div class="card-body">
     <ol class="list-group list-group-numbered">
-    <?php foreach ($c_conteudo as $item): ?>
+    <?php foreach ($lista_conteudo as $item): ?>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <div class="ms-2 me-auto">
         <div>
