@@ -4,7 +4,10 @@
  include('functions.php');
  $infoPwa = getPwaInfo();
 
- 
+//$c_conteudo = lerConteudo('todos');
+$c_audio = lerConteudo('audio');
+$c_video = lerConteudo('video');
+$c_texto = lerConteudo('text');
 
  ?>
 <html lang="en">
@@ -29,48 +32,20 @@
         <?php include('menu.php'); ?>
       </nav>
       <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
-        <h2>CMS do PWA (<?=getLastSegment(BASE_DIR) ?>)</h2>
-        <p>Gerencie as informações e conteúdos do PWA.</p>
-
-         <!-- [+]Card com informações do PWA -->
+        <h2>Conteúdos do PWA</h2>
         
-        <div class="card mt-4">
-          <div class="card-header">
-          <?= $infoPwa['titulo'] ?>
-          </div>
-          <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted"><?= $infoPwa['sub-titulo'] ?></h6>
-            <p class="card-text">
-              <strong>PWA ID:</strong> <span id="pwa-id"><?= $infoPwa['app-id'] ?></span><br>
-              <strong>Tamanho:</strong> <span id="pwa-size"><?= $infoPwa['tamanho'] ?></span><br>
-              <strong>Diretório Base:</strong> <span id="pwa-base-directory"><?= $infoPwa['diretorio-base'] ?></span>
-              
-            </p>
-          </div>
-        </div>
-        <!-- [-]Card do pwa -->
-<br>
-        
-       
+       <!-- [+]card conteúdo: Audio -->
+    
 
-       <!-- [+]card conteúdo -->
-       <?php
-        $c_conteudo = lerConteudo('todos');
-       // $c_texto = lerConteudo('text');
-       // $c_audio = lerConteudo('audio');
-       // $c_video = lerConteudo('video');
-     
-       ?>
-
-       <?php if ($c_conteudo) {?>
+       <?php if ($c_audio) {?>
         <hr>
        <div class="card mt-4">
   <div class="card-header">
-  Conteúdos disponíveis
+   Conteúdo em Áudio
   </div>
   <div class="card-body">
     <ol class="list-group list-group-numbered">
-    <?php foreach ($c_conteudo as $item): ?>
+    <?php foreach ($c_audio as $item): ?>
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <div class="ms-2 me-auto">
         <div>
@@ -113,8 +88,128 @@
   </div>
 </div>
 
-       <?php }; ?>
-        <!-- [-]card conteúdo -->
+       <?php }; 
+       $item = null;
+       ?>
+
+
+        <!-- [-]card conteúdo: Video -->
+
+        <?php if ($c_video) {?>
+        <hr>
+       <div class="card mt-4">
+  <div class="card-header">
+   Conteúdo em vídeo
+  </div>
+  <div class="card-body">
+    <ol class="list-group list-group-numbered">
+    <?php foreach ($c_video as $item): ?>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="ms-2 me-auto">
+        <div>
+        <?php
+        $icon = null;
+                switch ($item['tipo']) {
+                  case 'text':
+                    echo '<i class="fas fa-file-alt"></i> ';
+                    $icon = '<i class="fas fa-file-alt"></i>';
+
+                    break;
+                  case 'audio':
+                    echo '<i class="fas fa-file-audio"></i> ';
+                    $icon = '<i class="fas fa-file-audio"></i>';
+                    break;
+                  case 'video':
+                    echo '<i class="fas fa-file-video"></i> ';
+                    $icon = '<i class="fas fa-file-video"></i>';
+                    break;
+                  default:
+                    echo '<i class="fas fa-file"></i> ';
+                    $icon = '<i class="fas fa-file"></i>';
+                    break;
+                };
+                echo htmlspecialchars($item['titulo']);
+             
+                ?>
+
+          </div>
+        </div>
+       
+        <div>
+          <button type="submit" id="btn_details" class="btn btn-info btn-details" data-tipo="<?= htmlspecialchars($item['tipo'] ?? ''); ?>" data-icon="<?= htmlspecialchars($icon ?? '');?>" data-titulo="<?= htmlspecialchars($item['titulo'] ?? ''); ?>" data-imagem="<?= htmlspecialchars($item['imagem'] ?? ''); ?>" data-descricao="<?= htmlspecialchars($item['descricao-da-imagem'] ?? ''); ?>" data-arquivo="<?=htmlspecialchars($item['arquivo'] ?? ''); ?>"><i class="fa-solid fa-binoculars"></i> Exibir</button>
+          <button type="submit" id="btn_delete" class="btn btn-danger" data-arquivo="<?= htmlspecialchars($item['arquivo']); ?>"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+        </div>
+        
+      </li>
+      <?php endforeach; ?>
+    </ol>
+  </div>
+</div>
+
+       <?php }; 
+       $item = null;
+       ?>
+        <!-- [-]card conteúdo: Video -->
+
+         <!-- [-]card conteúdo: Texto -->
+
+         <?php if ($c_texto) {?>
+        <hr>
+       <div class="card mt-4">
+  <div class="card-header">
+   Conteúdo em Texto
+  </div>
+  <div class="card-body">
+    <ol class="list-group list-group-numbered">
+    <?php foreach ($c_texto as $item): ?>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="ms-2 me-auto">
+        <div>
+        <?php
+        $icon = null;
+                switch ($item['tipo']) {
+                  case 'text':
+                    echo '<i class="fas fa-file-alt"></i> ';
+                    $icon = '<i class="fas fa-file-alt"></i>';
+
+                    break;
+                  case 'audio':
+                    echo '<i class="fas fa-file-audio"></i> ';
+                    $icon = '<i class="fas fa-file-audio"></i>';
+                    break;
+                  case 'video':
+                    echo '<i class="fas fa-file-video"></i> ';
+                    $icon = '<i class="fas fa-file-video"></i>';
+                    break;
+                  default:
+                    echo '<i class="fas fa-file"></i> ';
+                    $icon = '<i class="fas fa-file"></i>';
+                    break;
+                };
+                echo htmlspecialchars($item['titulo']);
+             
+                ?>
+
+          </div>
+        </div>
+       
+        <div>
+          <button type="submit" id="btn_details" class="btn btn-info btn-details" data-tipo="<?= htmlspecialchars($item['tipo'] ?? ''); ?>" data-icon="<?= htmlspecialchars($icon ?? '');?>" data-titulo="<?= htmlspecialchars($item['titulo'] ?? ''); ?>" data-imagem="<?= htmlspecialchars($item['imagem'] ?? ''); ?>" data-descricao="<?= htmlspecialchars($item['descricao-da-imagem'] ?? ''); ?>" data-arquivo="<?=htmlspecialchars($item['arquivo'] ?? ''); ?>"><i class="fa-solid fa-binoculars"></i> Exibir</button>
+          <button type="submit" id="btn_delete" class="btn btn-danger" data-arquivo="<?= htmlspecialchars($item['arquivo']); ?>"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+        </div>
+        
+      </li>
+      <?php endforeach; ?>
+    </ol>
+  </div>
+</div>
+
+       <?php }; 
+       $item = null;
+       ?>
+        <!-- [-]card conteúdo: text -->
+
+
 
       
  <!-- [+] Modal -->

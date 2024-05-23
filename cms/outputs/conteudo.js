@@ -8,3 +8,5 @@ pwaFw.conteudo.adicionarFaixa('Um vídeo incrível.', 'b9cf5c4a-b644-4608-b122-a
 pwaFw.conteudo.adicionarFaixa('Video sound sony', null, null, '20b527a4-39f1-4d9a-8cda-79526927c3b5.mp4', 'video');
 pwaFw.conteudo.adicionarFaixa('Uma poesia de Maria Luiza Peidola.', null, null, '9144b2eb-1838-4979-b61a-ae675e57a108.html', 'text');
 pwaFw.conteudo.adicionarFaixa('Martinho da vila no bongue', 'f6280700-f113-44da-b2d0-190a2c9747b8.png', 'Um papel de parede do windows.', 'd90cf669-3229-4039-a881-107b2af1e6e9.mp4', 'video');
+pwaFw.conteudo.adicionarFaixa('Só pra testar mesmo', null, null, 'e6a815a1-cb78-46f9-9468-b9af823520fc.html', 'text');
+pwaFw.conteudo.adicionarFaixa('Um audio incrível do Zé Ramalho', '222cc844-dc5c-4d99-a4b4-153aaee0bb3a.png', 'Capa do álbum do zé ramalho.', '3067e4e7-e10c-448a-b27a-5f5d0ea83fe6.mp3', 'audio');

@@ -24,7 +24,7 @@
         <?php include('menu.php'); ?>
       </nav>
       <main class="col-md-10 ml-sm-auto col-lg-10 px-4">
-        <h2>Atualize as informações do PWA (<?=getLastSegment(BASE_DIR) ?>)</h2>
+        <h2>Configurações e informações do PWA (<?=getLastSegment(BASE_DIR) ?>)</h2>
       
 
         
