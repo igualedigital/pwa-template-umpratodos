@@ -15,3 +15,7 @@ qrCodeFw.conteudo.adicionarFaixa('noppz lopz', null, null, '', 'audio');
 pwaFw.conteudo.adicionarFaixa('aaaabs', null, null, '', 'audio');
 pwaFw.conteudo.adicionarFaixa('Aba gold!', null, null, '664fa866ef938-master_audio_sample.mp3', 'audio');
 pwaFw.conteudo.adicionarFaixa('Com imagame audio novo', '664faba7b82bc-image_sample.png', null, '664faba7b82c5-master_audio_sample.mp3', 'audio');
+pwaFw.conteudo.adicionarFaixa('Teste ajax save content', '664fecb7d60c4-anydesk00000.png', 'ground azul', '664fecb7d60c8-sample.mp3', 'audio');
+pwaFw.conteudo.adicionarFaixa('Trombeiteiro irlandês.', null, null, '664fedffa6724-vertical-sample.mp4', 'video');
+pwaFw.conteudo.adicionarFaixa('Maria Joaquina e o texto da morte do bezerro.', null, null, '', 'text');
+pwaFw.conteudo.adicionarFaixa('Texto do oh my god!', null, null, 'ed71d3899f6e9beb9fc63aa13329ac69.html', 'text');

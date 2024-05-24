@@ -1,5 +1,5 @@
-qrCodeFw.views = qrCodeFw.views || {};
-qrCodeFw.views.preloader = function() {
+pwaFw.views = pwaFw.views || {};
+pwaFw.views.preloader = function() {
     this.viewInit = function() {
         const progressBar = $('.progress-bar');
         const installButtonContainer = $('.install_button');
@@ -12,7 +12,7 @@ qrCodeFw.views.preloader = function() {
         let simulatedProgress = 0;
         let simulateLoadingInterval;
 
-        $('.title_elm').html(qrCodeFw.title+'<br>'+qrCodeFw.subtitle);
+        $('.title_elm').html(pwaFw.title+'<br>'+pwaFw.subtitle);
 
         $('#btn_follow_app').on('click', function() {
             console.log('Botão clicado, a página será recarregada.');
@@ -43,7 +43,7 @@ qrCodeFw.views.preloader = function() {
         simulateLoading();
 
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register(qrCodeFw.base_dir + 'sw.js').then(function(registration) {
+            navigator.serviceWorker.register(pwaFw.base_dir + 'sw.js').then(function(registration) {
                 console.log('Service Worker Registered');
 
                 navigator.serviceWorker.addEventListener('message', function(event) {
@@ -59,7 +59,7 @@ qrCodeFw.views.preloader = function() {
                         //loaderBar.hide();
 
                         installButtonContainer.show();
-                        localStorage.setItem(qrCodeFw.appId, 'true');
+                        localStorage.setItem(pwaFw.appId, 'true');
                     }
                 });
 
@@ -107,5 +107,5 @@ qrCodeFw.views.preloader = function() {
 };
 
 // Initialize the view
-var viewPage = new qrCodeFw.views.preloader();
+var viewPage = new pwaFw.views.preloader();
 viewPage.viewInit();

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-light bg-light">
     <button class="navbar-toggler" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,23 +23,24 @@
       </nav>
       <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <h2>Adicionar Texto</h2>
-        <form action="save_content.php" method="post" enctype="multipart/form-data">
+        <form id="textForm" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="title">Título</label>
             <input type="text" class="form-control" id="title" name="title" required>
           </div>
           <div class="form-group">
-            <label for="image">Imagem</label>
-            <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+            <label for="imageFile">Imagem</label>
+            <input type="file" class="form-control-file" id="imageFile" name="imageFile" accept="image/*">
             <img id="imagePreview" src="#" alt="Pré-visualização da Imagem" style="display: none; width: 200px;">
           </div>
           <div class="form-group">
             <label for="image_description">Descrição da Imagem</label>
-            <input type="text" class="form-control" id="image_description" name="image_description">
+            <input type="text" class="form-control" id="image_description" name="imageDescription">
           </div>
           <div class="form-group">
             <label for="content">Conteúdo</label>
-            <textarea class="form-control" id="content" name="content" rows="10" ></textarea>
+            <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+            <div class="invalid-feedback">O conteúdo não pode estar vazio.</div>
           </div>
           <input type="hidden" name="type" value="text">
           <button type="submit" class="btn btn-primary">Salvar</button>
@@ -50,34 +51,59 @@
   <?php include('footer.php'); ?>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-$(document).ready(function(){
+    $(document).ready(function(){
       $('.navbar-toggler').on('click', function() {
         $('.sidebar').toggleClass('active');
       });
 
-      $('#image').change(function() {
-      const [file] = this.files;
-      if (file) {
-        $('#imagePreview').attr('src', URL.createObjectURL(file)).show();
-      }
-    });
+      $('#imageFile').change(function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            $('#imagePreview').attr('src', e.target.result).show();
+          }
+          reader.readAsDataURL(file);
+        } else {
+          $('#imagePreview').hide();
+        }
+      });
 
-    $('#audio').change(function() {
-      const [file] = this.files;
-      if (file) {
-        $('#audioPreview').attr('src', URL.createObjectURL(file)).show();
-      }
-    });
-    var simplemde = new SimpleMDE({ element: document.getElementById("content") });
+      var simplemde = new SimpleMDE({ element: document.getElementById("content") });
 
-      $('#addTextForm').on('submit', function(e) {
+      $('#textForm').on('submit', function(e) {
+        e.preventDefault(); // Impede o envio do formulário normal
+
         var content = simplemde.value();
         if (!content.trim()) {
-          e.preventDefault(); // Impede o envio do formulário
           $('#content').siblings('.invalid-feedback').show(); // Exibe a mensagem de erro
           $('#content').addClass('is-invalid'); // Adiciona a classe de estilo Bootstrap para campo inválido
         } else {
-          $('#content').val(content); // Copia o conteúdo do SimpleMDE para o textarea
+          var formData = new FormData(this);
+          formData.append('content', content); // Adiciona o conteúdo do SimpleMDE ao FormData
+
+          $.ajax({
+            url: 'libs/save_content_ajax.php',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+              var jsonResponse = JSON.parse(response);
+              if (jsonResponse.status === 'success') {
+                alert('Dados salvos com sucesso!');
+                // Limpar formulário e pré-visualizações
+                $('#textForm')[0].reset();
+                simplemde.value(''); // Limpa o editor SimpleMDE
+                $('#imagePreview').hide();
+              } else {
+                alert('Erro: ' + jsonResponse.message);
+              }
+            },
+            error: function(xhr, status, error) {
+              alert('Erro ao enviar os dados.');
+            }
+          });
         }
       });
     });

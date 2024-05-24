@@ -14,12 +14,12 @@
 
 	<!-- [+]core -->
 		<script src="assets/js/pwafw.js"></script>
+		<script src="assets/js/settings.js"></script>
 		<script src="assets/js/class.MediaTracks.js"></script>
 		<script src="assets/js/conteudos.js"></script>
 		<script src="assets/js/main.js"></script>
-		<script src="assets/js/index.js"></script>
-		
-	<!-- [-]core-->
+		 
+	<!-- [-]core <script src="assets/js/index.js"></script> -->
 
 	<!-- [+]webapp -->
 	
@@ -32,12 +32,8 @@
 	// init webapp
 	function init(){
 		
-	var qrCodeInitializer = new pwaFw.initializer();
-	qrCodeInitializer.appStart();
-
-	var startPage = new pwaFw.qrCodeHome.index();
-	startPage.indexInit();
-
+		var qrCodeInitializer = new pwaFw.initializer();
+		qrCodeInitializer.appStart();
 
 	};
 

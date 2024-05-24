@@ -1,5 +1,5 @@
-qrCodeFw.views = {};
-qrCodeFw.views.configuracao = function(){
+pwaFw.views = {};
+pwaFw.views.configuracao = function(){
 
     this.viewInit = function() {
         
@@ -43,18 +43,18 @@ qrCodeFw.views.configuracao = function(){
         });
 
 
-        setting_webapp_title.html('<strong>' + qrCodeFw.title + ' • ' + qrCodeFw.subtitle + '</strong>');
-        setting_webappid.html('<strong>' + qrCodeFw.appId + '</strong>');
-        setting_webapp_basedir.html('<strong>' + qrCodeFw.base_dir + '</strong>');
-        setting_webapp_version.html('<strong>' + qrCodeFw.version + '</strong>');
+        setting_webapp_title.html('<strong>' + pwaFw.title + ' • ' + pwaFw.subtitle + '</strong>');
+        setting_webappid.html('<strong>' + pwaFw.appId + '</strong>');
+        setting_webapp_basedir.html('<strong>' + pwaFw.base_dir + '</strong>');
+        setting_webapp_version.html('<strong>' + pwaFw.version + '</strong>');
     
         // Configurações padrão
         const defaultSettings = {
-            audio_autoplay: qrCodeFw.audio_autoplay,
-            video_autoplay: qrCodeFw.video_autoplay,
-            videos_autofullscreen: qrCodeFw.videos_autofullscreen,
-            inactive_home_back_timer: qrCodeFw.inactive_home_back_timer,
-            exhibition_navigation_type : qrCodeFw.exhibition_navigation_type
+            audio_autoplay: pwaFw.audio_autoplay,
+            video_autoplay: pwaFw.video_autoplay,
+            videos_autofullscreen: pwaFw.videos_autofullscreen,
+            inactive_home_back_timer: pwaFw.inactive_home_back_timer,
+            exhibition_navigation_type : pwaFw.exhibition_navigation_type
         };
     
         // Função para carregar configuração ou definir padrão
@@ -68,11 +68,11 @@ qrCodeFw.views.configuracao = function(){
         }
     
         // Carrega as configurações do localStorage ou define os valores padrão
-        const us_audio_autoplay = loadSetting(qrCodeFw.appId + '_audio_autoplay', parseInt(defaultSettings.audio_autoplay,10));
-        const us_video_autoplay = loadSetting(qrCodeFw.appId + '_video_autoplay', parseInt(defaultSettings.video_autoplay,10));
-        const us_videos_autofullscreen = loadSetting(qrCodeFw.appId + '_video_fullscreen', parseInt(defaultSettings.videos_autofullscreen,10));
-        const us_inactive_home_back_timer = loadSetting(qrCodeFw.appId + '_inactive_home_back_timer', parseInt(defaultSettings.inactive_home_back_timer,10));
-        const us_exhibition_navigation_type = loadSetting(qrCodeFw.appId + '_exhibition_navigation_type', qrCodeFw.exhibition_navigation_type);
+        const us_audio_autoplay = loadSetting(pwaFw.appId + '_audio_autoplay', parseInt(defaultSettings.audio_autoplay,10));
+        const us_video_autoplay = loadSetting(pwaFw.appId + '_video_autoplay', parseInt(defaultSettings.video_autoplay,10));
+        const us_videos_autofullscreen = loadSetting(pwaFw.appId + '_video_fullscreen', parseInt(defaultSettings.videos_autofullscreen,10));
+        const us_inactive_home_back_timer = loadSetting(pwaFw.appId + '_inactive_home_back_timer', parseInt(defaultSettings.inactive_home_back_timer,10));
+        const us_exhibition_navigation_type = loadSetting(pwaFw.appId + '_exhibition_navigation_type', pwaFw.exhibition_navigation_type);
        
 
         // Atualiza a UI com as configurações carregadas
@@ -119,7 +119,7 @@ qrCodeFw.views.configuracao = function(){
         // Evento para alterar configuração de audio autoplay
         $('.us_audio_autoplay').on('click', function() {
             var checkbox = $('#chb_us_audio_autoplay');
-            var storageKey = qrCodeFw.appId + '_audio_autoplay';
+            var storageKey = pwaFw.appId + '_audio_autoplay';
             var isChecked = !checkbox.prop('checked');
     
             checkbox.prop('checked', isChecked);
@@ -135,7 +135,7 @@ qrCodeFw.views.configuracao = function(){
         // Evento para alterar configuração de video autoplay
         $('.us_video_autoplay').on('click', function() {
             var checkbox = $('#chb_us_video_autoplay');
-            var storageKey = qrCodeFw.appId + '_video_autoplay';
+            var storageKey = pwaFw.appId + '_video_autoplay';
             var isChecked = !checkbox.prop('checked');
     
             checkbox.prop('checked', isChecked);
@@ -151,7 +151,7 @@ qrCodeFw.views.configuracao = function(){
         // Evento para alterar configuração de video fullscreen
         $('.us_videos_autofullscreen').on('click', function() {
             var checkbox = $('#chb_us_videos_autofullscreen');
-            var storageKey = qrCodeFw.appId + '_video_fullscreen';
+            var storageKey = pwaFw.appId + '_video_fullscreen';
             var isChecked = !checkbox.prop('checked');
     
             checkbox.prop('checked', isChecked);
@@ -168,7 +168,7 @@ qrCodeFw.views.configuracao = function(){
         // Evento para alterar configuração do tipo de exbição dos controles.
         $('.cfg-list-flex.us_exhibition_navigation_type .radio-group input[type="radio"]').on('change', function() {
             var selectedValue = $(this).val();
-            var storageKey = qrCodeFw.appId + '_exhibition_navigation_type';
+            var storageKey = pwaFw.appId + '_exhibition_navigation_type';
     
             switch (selectedValue) {
                 case 'none':
@@ -194,7 +194,7 @@ qrCodeFw.views.configuracao = function(){
         // Evento para alterar configuração de inactive home back timer
         $('.cfg-list-flex.us_inactive_home_back_timer .radio-group input[type="radio"]').on('change', function() {
             var selectedValue = $(this).val();
-            var storageKey = qrCodeFw.appId + '_inactive_home_back_timer';
+            var storageKey = pwaFw.appId + '_inactive_home_back_timer';
     
             if (selectedValue === '0') {
                 localStorage.setItem(storageKey, '0');
@@ -212,7 +212,7 @@ qrCodeFw.views.configuracao = function(){
 
     // Abre o changlog
     $('#appVersion').on('click', function() {
-        qrCodeFw.viewLoader('changelog');
+        pwaFw.viewLoader('changelog');
     });
 
     }; // eof; init
@@ -226,5 +226,5 @@ qrCodeFw.views.configuracao = function(){
 };
 
     // boot view
-    var viewPage = new qrCodeFw.views.configuracao();
+    var viewPage = new pwaFw.views.configuracao();
     viewPage.viewInit();

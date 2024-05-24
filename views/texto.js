@@ -1,13 +1,13 @@
-qrCodeFw.views = {};
+pwaFw.views = {};
 
-qrCodeFw.views.texto = function() {
+pwaFw.views.texto = function() {
 
     this.viewInit = function() {
 
         console.log('View texto - loaded');
 
          // Adicione as faixas de texto
-         const TextContent = qrCodeFw.conteudo; // Conteudo de TEXTO (text .html)
+         const TextContent = pwaFw.conteudo; // Conteudo de TEXTO (text .html)
 
         const navigationBars = $('.multritrack-navigation');
         const textContainerElement = document.getElementById('component-card-text'); // Certifique-se de que o ID do contêiner de texto seja correto
@@ -61,7 +61,7 @@ qrCodeFw.views.texto = function() {
         if (TextContent.contarFaixas('text') === 1) {
             
             // Controle de navegação para recursos com item único.
-            switch (qrCodeFw.exhibition_navigation_type) {
+            switch (pwaFw.exhibition_navigation_type) {
                 case 'none':
                     // Remove barras e botões
                       $('#libras').removeClass('media-multitrack');
@@ -132,5 +132,5 @@ qrCodeFw.views.texto = function() {
 };
 
 // Boot view: Inicializador do módulo
-var viewPage = new qrCodeFw.views.texto();
+var viewPage = new pwaFw.views.texto();
 viewPage.viewInit();

@@ -1,11 +1,11 @@
-qrCodeFw.views = {};
+pwaFw.views = {};
 
-qrCodeFw.views.libras = function() {
+pwaFw.views.libras = function() {
     this.viewInit = function() {
         console.log('View LIBRAS - loaded');
 
         // Adicione as faixas de vídeo
-        const VideoTracks = qrCodeFw.conteudo; // Conteúdo de LIBRAS (vídeo .mp4)
+        const VideoTracks = pwaFw.conteudo; // Conteúdo de LIBRAS (vídeo .mp4)
 
         const navigationBars = $('.multritrack-navigation');
         const mediaElement = document.getElementById('videoElm');
@@ -21,15 +21,15 @@ qrCodeFw.views.libras = function() {
 
         // Função para configurar eventos de tela cheia
         const setupFullscreenEvents = () => {
-            if (qrCodeFw.videos_autofullscreen === 1 && !qrCodeFw.isIPhone) {
+            if (pwaFw.videos_autofullscreen === 1 && !pwaFw.isIPhone) {
                 let isSeeking = false; // Flag para detectar interação com a barra de progresso
                 let seekTimeout; // Timeout para diferenciar entre pausa intencional e pausa causada por seek
                 
-                mediaElement.addEventListener('play', () => qrCodeFw.enterFullScreen(mediaElement));
+                mediaElement.addEventListener('play', () => pwaFw.enterFullScreen(mediaElement));
                 mediaElement.addEventListener('pause', () => {
                     seekTimeout = setTimeout(() => {
                         if (!isSeeking) {
-                            qrCodeFw.exitFullScreen();
+                            pwaFw.exitFullScreen();
                         }
                     }, 100); // Pequeno atraso antes de sair do modo de tela cheia
                 });
@@ -41,11 +41,11 @@ qrCodeFw.views.libras = function() {
                     isSeeking = false;
                     setTimeout(() => {
                         if (!mediaElement.paused) {
-                            qrCodeFw.enterFullScreen(mediaElement);
+                            pwaFw.enterFullScreen(mediaElement);
                         }
                     }, 100); // Pequeno atraso para garantir que estamos fora do evento seek
                 });
-                mediaElement.addEventListener('ended', qrCodeFw.exitFullScreen);
+                mediaElement.addEventListener('ended', pwaFw.exitFullScreen);
             }
         };
 
@@ -77,7 +77,7 @@ qrCodeFw.views.libras = function() {
 
             // Adiciona um ouvinte para quando o media estiver pronto para ser reproduzido
             mediaElement.oncanplay = () => {
-                if (qrCodeFw.video_autoplay) {
+                if (pwaFw.video_autoplay) {
                     const playPromise = mediaElement.play();
                     if (playPromise !== undefined) {
                         playPromise.then(() => {
@@ -98,7 +98,7 @@ qrCodeFw.views.libras = function() {
         if (VideoTracks.contarFaixas('video') === 1) {
         
              // Controle de navegação para recursos com item único.
-             switch (qrCodeFw.exhibition_navigation_type) {
+             switch (pwaFw.exhibition_navigation_type) {
                 case 'none':
                     // Remove barras e botões
                       $('#libras').removeClass('media-multitrack');
@@ -141,7 +141,7 @@ qrCodeFw.views.libras = function() {
 
             setupFullscreenEvents();
 
-            if (qrCodeFw.video_autoplay) {
+            if (pwaFw.video_autoplay) {
                 mediaElement.play().catch((error) => {
                     console.error('Erro durante a reprodução do media:', error);
                 });
@@ -182,5 +182,5 @@ qrCodeFw.views.libras = function() {
 };
 
 // Boot view
-var viewPage = new qrCodeFw.views.libras();
+var viewPage = new pwaFw.views.libras();
 viewPage.viewInit();

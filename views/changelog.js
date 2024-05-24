@@ -1,5 +1,5 @@
-qrCodeFw.views = {};
-qrCodeFw.views.changelog = function(){
+pwaFw.views = {};
+pwaFw.views.changelog = function(){
 
     this.viewInit = function() {
         
@@ -8,8 +8,8 @@ qrCodeFw.views.changelog = function(){
 
     // retorna as configurações
     $('#btn_voltar').on('click', function() {
-        //qrCodeFw.viewLoader('configuracao');
-        qrCodeFw.viewLoader('configuracao');
+        //pwaFw.viewLoader('configuracao');
+        pwaFw.viewLoader('configuracao');
     });
 
 
@@ -20,5 +20,5 @@ qrCodeFw.views.changelog = function(){
 };
 
     // boot view
-    var viewPage = new qrCodeFw.views.changelog();
+    var viewPage = new pwaFw.views.changelog();
     viewPage.viewInit();

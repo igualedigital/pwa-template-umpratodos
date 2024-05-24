@@ -21,28 +21,28 @@
       </nav>
       <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <h2>Adicionar Áudio</h2>
-        <form action="libs/save_content.php" method="post" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="title">Título</label>
-            <input type="text" class="form-control" id="title" name="title" required>
-          </div>
-          <div class="form-group">
-            <label for="image">Imagem</label>
-            <input type="file" class="form-control-file" id="imageFile" name="imageFile" accept="image/*">
-            <img id="imagePreview" src="#" alt="Pré-visualização da Imagem" style="display: none;">
-          </div>
-          <div class="form-group">
-            <label for="image_description">Descrição da Imagem</label>
-            <input type="text" class="form-control" id="image_description" name="image_description">
-          </div>
-          <div class="form-group">
-            <label for="audio">Áudio</label>
-            <input type="file" class="form-control-file" id="contentFile" name="contentFile" accept="audio/mp3" required>
-            <audio id="audioPreview" style="display: none;" controls></audio>
-          </div>
-          <input type="hidden" name="type" value="audio">
-          <button type="submit" class="btn btn-primary">Salvar</button>
-        </form>
+        <form id="audioForm" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="imageFile">Imagem</label>
+        <input type="file" class="form-control-file" id="imageFile" name="imageFile" accept="image/*">
+        <img id="imagePreview" src="#" alt="Pré-visualização da Imagem" style="display: none;">
+      </div>
+      <div class="form-group">
+        <label for="image_description">Descrição da Imagem</label>
+        <input type="text" class="form-control" id="image_description" name="imageDescription">
+      </div>
+      <div class="form-group">
+        <label for="contentFile">Áudio</label>
+        <input type="file" class="form-control-file" id="contentFile" name="contentFile" accept="audio/mp3" required>
+        <audio id="audioPreview" style="display: none;" controls></audio>
+      </div>
+      <input type="hidden" name="type" value="audio">
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
       </main>
     </div>
   </div>
@@ -55,19 +55,76 @@ $(document).ready(function(){
         $('.sidebar').toggleClass('active');
       });
 
-      $('#image').change(function() {
-      const [file] = this.files;
-      if (file) {
-        $('#imagePreview').attr('src', URL.createObjectURL(file)).show();
-      }
-    });
+     // Pré-visualização da imagem
+     $('#imageFile').change(function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            $('#imagePreview').attr('src', e.target.result).show();
+          }
+          reader.readAsDataURL(file);
+        } else {
+          $('#imagePreview').hide();
+        }
+      });
 
-    $('#audio').change(function() {
-      const [file] = this.files;
-      if (file) {
-        $('#audioPreview').attr('src', URL.createObjectURL(file)).show();
-      }
-    });
+      // Pré-visualização da imagem
+      $('#imageFile').change(function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            $('#imagePreview').attr('src', e.target.result).show();
+          }
+          reader.readAsDataURL(file);
+        } else {
+          $('#imagePreview').hide();
+        }
+      });
+
+      // Pré-visualização do áudio
+      $('#contentFile').change(function() {
+        const file = this.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            $('#audioPreview').attr('src', e.target.result).show();
+          }
+          reader.readAsDataURL(file);
+        } else {
+          $('#audioPreview').hide();
+        }
+      });
+
+      // Enviar formulário via AJAX
+      $('#audioForm').on('submit', function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+
+        $.ajax({
+          url: 'libs/save_content_ajax.php',
+          type: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function(response) {
+            var jsonResponse = JSON.parse(response);
+            if (jsonResponse.status === 'success') {
+              alert('Conteúdo em áudio adicionado!');
+              // Limpar formulário e pré-visualizações
+              $('#audioForm')[0].reset();
+              $('#imagePreview').hide();
+              $('#audioPreview').hide();
+            } else {
+              alert('Erro: ' + jsonResponse.message);
+            }
+          },
+          error: function(xhr, status, error) {
+            alert('Erro ao enviar os dados.');
+          }
+        });
+      });
 
     });
 

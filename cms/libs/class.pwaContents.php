@@ -4,16 +4,14 @@ class pwaContents {
     private $conteudoJsPath;
     
     public function __construct() {
+        $this->conteudoJsPath = PWA_DIR . DIRECTORY_SEPARATOR . 'cms' . DIRECTORY_SEPARATOR . 'outputs' . DIRECTORY_SEPARATOR . 'conteudo.js';
 
-        $this->conteudoJsPath = PWA_CMS_DIR . DIRECTORY_SEPARATOR . 'outputs' . DIRECTORY_SEPARATOR . 'conteudo.js';
-        
         // Verifica se o diretório 'outputs' existe, se não, cria o diretório
         $outputDir = dirname($this->conteudoJsPath);
-
         if (!is_dir($outputDir)) {
             mkdir($outputDir, 0755, true);
         }
-        
+
         // Verifica se o arquivo conteudo.js existe, se não, cria com conteúdo inicial
         if (!file_exists($this->conteudoJsPath)) {
             $conteudoJs = "pwaFw.conteudo = pwaFw.conteudo || {};\n\n";
@@ -25,20 +23,20 @@ class pwaContents {
     public function adicionarConteudo($title, $type, $imageDescription, $imageFile, $contentFile) {
         // Renomear arquivos para nomes únicos
         $imageFileName = $imageFile ? uniqid() . '-' . basename($imageFile) : null;
-        $contentFileName = $contentFile ? uniqid() . '-' . basename($contentFile) : null;
 
-        // Processar upload de arquivos
-        if ($imageFile) {
-            $imageFilePath = PWA_STORAGE_IMAGES . DIRECTORY_SEPARATOR . $imageFileName;
-           
+        // Processar upload de arquivos de imagem
+        if ($imageFile && isset($_FILES['imageFile']) && $_FILES['imageFile']['error'] == 0) {
+            $imageFilePath = PWA_STORAGE . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $imageFileName;
             if (!move_uploaded_file($_FILES['imageFile']['tmp_name'], $imageFilePath)) {
                 throw new Exception('Falha ao mover o arquivo de imagem.');
             }
+        } else {
+            $imageFileName = null;
         }
-        echo $imageFilePath = PWA_STORAGE_IMAGES . DIRECTORY_SEPARATOR . $imageFileName;
-        die();
 
-        if ($contentFile) {
+        // Processar upload de arquivos de conteúdo
+        if ($contentFile && isset($_FILES['contentFile']) && $_FILES['contentFile']['error'] == 0) {
+            $contentFileName = uniqid() . '-' . basename($contentFile);
             $contentFilePath = '';
             switch ($type) {
                 case 'audio':
@@ -56,7 +54,13 @@ class pwaContents {
             if (!move_uploaded_file($_FILES['contentFile']['tmp_name'], $contentFilePath)) {
                 throw new Exception('Falha ao mover o arquivo de conteúdo.');
             }
+        } elseif ($type === 'text') {
+            // Caso especial para tipo texto, onde $contentFile já é o nome do arquivo HTML gerado anteriormente
+            $contentFileName = $contentFile;
+        } else {
+            $contentFileName = null;
         }
+
         // Atualizar o arquivo conteudo.js
         $conteudoJs = file_get_contents($this->conteudoJsPath);
         $newContent = "pwaFw.conteudo.adicionarFaixa('$title', " . ($imageFileName ? "'$imageFileName'" : "null") . ", " . ($imageDescription ? "'$imageDescription'" : "null") . ", '$contentFileName', '$type');\n";
@@ -65,16 +69,13 @@ class pwaContents {
     }
 
     public function listarConteudo($type = 'todos') {
-
         if (!file_exists($this->conteudoJsPath)) {
             return array();
         }
-        
-    
+
         $conteudoJs = file_get_contents($this->conteudoJsPath);
         $conteudos = array();
 
-        
         $pattern = "/pwaFw.conteudo.adicionarFaixa\('([^']*)',\s*([^,]*),\s*([^,]*),\s*'([^']*)',\s*'([^']*)'\);/";
         preg_match_all($pattern, $conteudoJs, $matches, PREG_SET_ORDER);
 
@@ -87,13 +88,10 @@ class pwaContents {
                 'tipo' => $match[5]
             );
 
-            
             if ($type === 'todos' || $type === $conteudo['tipo']) {
                 $conteudos[] = $conteudo;
             }
         }
-
-      
 
         return $conteudos;
     }

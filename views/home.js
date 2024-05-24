@@ -1,5 +1,5 @@
-qrCodeFw.views = {};
-qrCodeFw.views.home = function(){
+pwaFw.views = {};
+pwaFw.views.home = function(){
 
     this.viewInit = function(){
 
@@ -23,7 +23,7 @@ qrCodeFw.views.home = function(){
 
         console.log('click:',clickCount);
         if (clickCount >= clickLimit) {
-            qrCodeFw.viewLoader('configuracao');
+            pwaFw.viewLoader('configuracao');
             clickCount = 0; // Reset the counter after loading the view
         }
     });
@@ -36,5 +36,5 @@ qrCodeFw.views.home = function(){
 };
 
     // boot view
-    var viewPage = new qrCodeFw.views.home();
+    var viewPage = new pwaFw.views.home();
     viewPage.viewInit();

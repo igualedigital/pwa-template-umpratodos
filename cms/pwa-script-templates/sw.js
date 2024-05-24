@@ -7,7 +7,7 @@ if (workbox) {
     const rev_val = 2;
 
     workbox.core.setCacheNameDetails({
-        prefix: '@bappid',
+        prefix: '@app-id',
         suffix: 'v'+rev_val,
         precache: 'precache',
         runtime: 'runtime-cache'
@@ -112,7 +112,7 @@ if (workbox) {
         
         // Arquivos de audio
        
-        // @conteudo@
+        // @conteudos
         
        
     ]);

@@ -3,7 +3,7 @@
   "short_name": "@subtitle",
   "description": "@description",
   "scope": "@basedir",
-  "id": "@appid",
+  "id": "@app-id",
   "start_url": "@basedirindex.html",
   "display": "fullscreen",
   "display_override": ["fullscreen", "standalone"],

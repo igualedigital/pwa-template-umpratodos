@@ -1,11 +1,11 @@
-qrCodeFw.views = {};
+pwaFw.views = {};
 
-qrCodeFw.views.audiodescricao = function() {
+pwaFw.views.audiodescricao = function() {
 
     this.viewInit = function() {
         console.log('View audiodescrição - loaded');
 
-        const AudioTracks = qrCodeFw.conteudo; // Conteudo de AD (audio .mp3)
+        const AudioTracks = pwaFw.conteudo; // Conteudo de AD (audio .mp3)
 
         const navigationBars = $('.multritrack-navigation');
         const mediaElement = document.getElementById('audio');
@@ -46,7 +46,7 @@ qrCodeFw.views.audiodescricao = function() {
 
             // Adiciona um ouvinte para quando o media estiver pronto para ser reproduzido
             mediaElement.oncanplay = () => {
-                if (qrCodeFw.audio_autoplay) {
+                if (pwaFw.audio_autoplay) {
                     const playPromise = mediaElement.play();
                     if (playPromise !== undefined) {
                         playPromise.then(() => {
@@ -68,7 +68,7 @@ qrCodeFw.views.audiodescricao = function() {
            
           
             // Controle de navegação para recursos com item único.
-            switch (qrCodeFw.exhibition_navigation_type) {
+            switch (pwaFw.exhibition_navigation_type) {
                 case 'none':
                     // Remove barras e botões
                       $('#ad').removeClass('media-multitrack');
@@ -111,7 +111,7 @@ qrCodeFw.views.audiodescricao = function() {
             mediaElement.src = track.arquivo;
             updateBanner(track);
 
-            if (qrCodeFw.audio_autoplay) {
+            if (pwaFw.audio_autoplay) {
                 mediaElement.play().catch((error) => {
                     console.error('Erro durante a reprodução do media:', error);
                 });
@@ -148,5 +148,5 @@ qrCodeFw.views.audiodescricao = function() {
 };
 
 // Boot view: Inicializador do módulo
-var viewPage = new qrCodeFw.views.audiodescricao();
+var viewPage = new pwaFw.views.audiodescricao();
 viewPage.viewInit();
