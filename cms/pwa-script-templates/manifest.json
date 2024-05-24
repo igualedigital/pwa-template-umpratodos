@@ -4,7 +4,7 @@
   "description": "@description",
   "scope": "@basedir",
   "id": "@app-id",
-  "start_url": "@basedirindex.html",
+  "start_url": "@basedir/index.html",
   "display": "fullscreen",
   "display_override": ["fullscreen", "standalone"],
   "orientation": "portrait",

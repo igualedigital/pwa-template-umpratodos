@@ -4,7 +4,7 @@ if (workbox) {
     console.log(`[Workbox] carregado!`);
 
     const base_dir = '@basedir';
-    const rev_val = 2;
+    const rev_val = @cacheversion;
 
     workbox.core.setCacheNameDetails({
         prefix: '@app-id',

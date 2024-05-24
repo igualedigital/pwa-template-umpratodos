@@ -1,11 +1,5 @@
 <?php
 
-require 'Parsedown.php';
-require 'class.pwaContents.php';
-require 'class.pwaSettings.php';
-
-//define('BASE_DIR', dirname(__DIR__,2));
-
 define('PWA_CMS_DIR', dirname(__DIR__));
 define('PWA_DIR', dirname(__DIR__,2));
 define('PWA_ASSETS', PWA_DIR . DIRECTORY_SEPARATOR . 'assets');
@@ -16,17 +10,15 @@ define('PWA_STORAGE_VIDEO', PWA_STORAGE . DIRECTORY_SEPARATOR .'media'. DIRECTOR
 define('PWA_STORAGE_TEXT', PWA_STORAGE . DIRECTORY_SEPARATOR .'media'. DIRECTORY_SEPARATOR . 'text');
 define('PWA_STORAGE_IMAGES', PWA_STORAGE . DIRECTORY_SEPARATOR .'media'. DIRECTORY_SEPARATOR . 'image');
 
-/*
-echo 'PWA CMS Directory: ' . PWA_CMS_DIR . PHP_EOL;
-echo 'PWA Directory: ' . PWA_DIR . PHP_EOL;
-echo 'PWA Assets: ' . PWA_ASSETS . PHP_EOL;
-echo 'PWA Storage: ' . PWA_STORAGE . PHP_EOL;
-echo 'PWA Storage Audio: ' . PWA_STORAGE_AUDIO . PHP_EOL;
-echo 'PWA Storage Video: ' . PWA_STORAGE_VIDEO . PHP_EOL;
-echo 'PWA Storage Text: ' . PWA_STORAGE_TEXT . PHP_EOL;
 
-die();
-*/
+require 'Parsedown.php';
+require 'class.pwaContents.php';
+require 'class.pwaSettings.php';
+
+//define('BASE_DIR', dirname(__DIR__,2));
+
+
+
 /**
  * Calcula o tamanho de um diretório, excluindo um subdiretório específico.
  *
