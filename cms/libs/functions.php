@@ -1,7 +1,24 @@
 <?php
 
-define('PWA_CMS_DIR', dirname(__DIR__));
-define('PWA_DIR', dirname(__DIR__,2));
+// Recupera as variáveis de ambiente definidas no .htaccess
+$documentRoot = rtrim($_SERVER['DOCUMENT_ROOT'], '/');
+$appDirectory = getenv('APP_DIRECTORY');
+$cmsDirectory = getenv('CMS_DIRECTORY');
+
+// Definir o caminho absoluto combinando o document root com o caminho relativo
+$pwaDirectoryAbsolute = $documentRoot .$appDirectory;
+$cmsDirectoryAbsolute = $documentRoot . $cmsDirectory;
+
+// Define as constantes com base nas variáveis de ambiente
+define('PWA_WEB_ROOT', 'https://' . $_SERVER['HTTP_HOST'] . $appDirectory);
+define('PWA_WEB_BASE', $appDirectory);
+define('PWA_WEB_STORAGE',PWA_WEB_BASE.'storage/');
+define('PWA_CMS_WEB_ROOT', 'https://' . $_SERVER['HTTP_HOST'] . $cmsDirectory);
+
+define('PWA_CMS_DIR', $cmsDirectoryAbsolute);
+
+
+define('PWA_DIR', $pwaDirectoryAbsolute);
 define('PWA_ASSETS', PWA_DIR . DIRECTORY_SEPARATOR . 'assets');
 define('PWA_STORAGE', PWA_DIR . DIRECTORY_SEPARATOR . 'storage');
 define('PWA_STORAGE_MEDIA', PWA_DIR . DIRECTORY_SEPARATOR . 'storage'. DIRECTORY_SEPARATOR .'media');
@@ -9,11 +26,13 @@ define('PWA_STORAGE_AUDIO', PWA_STORAGE . DIRECTORY_SEPARATOR .'media'. DIRECTOR
 define('PWA_STORAGE_VIDEO', PWA_STORAGE . DIRECTORY_SEPARATOR .'media'. DIRECTORY_SEPARATOR . 'video');
 define('PWA_STORAGE_TEXT', PWA_STORAGE . DIRECTORY_SEPARATOR .'media'. DIRECTORY_SEPARATOR . 'text');
 define('PWA_STORAGE_IMAGES', PWA_STORAGE . DIRECTORY_SEPARATOR .'media'. DIRECTORY_SEPARATOR . 'image');
+define('SEQUENCIAL_FILE',PWA_CMS_DIR. DIRECTORY_SEPARATOR .'libs'.DIRECTORY_SEPARATOR . 'sequencial.txt');
 
 
 require 'Parsedown.php';
-require 'class.pwaContents.php';
 require 'class.pwaSettings.php';
+require 'class.pwaContents.php';
+
 
 //define('BASE_DIR', dirname(__DIR__,2));
 
@@ -38,6 +57,26 @@ function calculateDirectorySize($directory, $excludeDirectory) {
 
     return $size;
 }
+
+function getNextSequenceNumber($filePath) {
+    if (!file_exists($filePath)) {
+        file_put_contents($filePath, 1);
+        return 1;
+    } else {
+        $currentNumber = (int)file_get_contents($filePath);
+        $nextNumber = $currentNumber + 1;
+        file_put_contents($filePath, $nextNumber);
+        return $nextNumber;
+    }
+}
+function getCurrentSequenceNumber($filePath) {
+    if (!file_exists($filePath)) {
+        return 1; // Se o arquivo não existir, retorne 1 como o valor padrão
+    } else {
+        return (int)file_get_contents($filePath);
+    }
+}
+
 
 /**
  * Formata o tamanho de bytes para uma string legível.

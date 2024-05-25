@@ -43,7 +43,7 @@
             <div class="invalid-feedback">O conteúdo não pode estar vazio.</div>
           </div>
           <input type="hidden" name="type" value="text">
-          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-spinner fa-spin d-none mr-2"></i> Salvar</button>
         </form>
       </main>
     </div>
@@ -72,40 +72,53 @@
       var simplemde = new SimpleMDE({ element: document.getElementById("content") });
 
       $('#textForm').on('submit', function(e) {
-        e.preventDefault(); // Impede o envio do formulário normal
+    e.preventDefault(); // Impede o envio do formulário normal
 
-        var content = simplemde.value();
-        if (!content.trim()) {
-          $('#content').siblings('.invalid-feedback').show(); // Exibe a mensagem de erro
-          $('#content').addClass('is-invalid'); // Adiciona a classe de estilo Bootstrap para campo inválido
-        } else {
-          var formData = new FormData(this);
-          formData.append('content', content); // Adiciona o conteúdo do SimpleMDE ao FormData
+    var content = simplemde.value();
+    if (!content.trim()) {
+        $('#content').siblings('.invalid-feedback').show(); // Exibe a mensagem de erro
+        $('#content').addClass('is-invalid'); // Adiciona a classe de estilo Bootstrap para campo inválido
+    } else {
+        var $submitButton = $(this).find('button[type="submit"]');
+        var $spinner = $submitButton.find('.fas');
+        $submitButton.prop('disabled', true);
+        $spinner.removeClass('d-none');
 
-          $.ajax({
+        var formData = new FormData(this);
+        formData.append('content', content); // Adiciona o conteúdo do SimpleMDE ao FormData
+
+        $.ajax({
             url: 'libs/save_content_ajax.php',
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
             success: function(response) {
-              var jsonResponse = JSON.parse(response);
-              if (jsonResponse.status === 'success') {
-                alert('Dados salvos com sucesso!');
-                // Limpar formulário e pré-visualizações
-                $('#textForm')[0].reset();
-                simplemde.value(''); // Limpa o editor SimpleMDE
-                $('#imagePreview').hide();
-              } else {
-                alert('Erro: ' + jsonResponse.message);
-              }
+                var jsonResponse = JSON.parse(response);
+                if (jsonResponse.status === 'success') {
+                    alert('Dados salvos com sucesso!');
+                    // Limpar formulário e pré-visualizações
+                    $('#textForm')[0].reset();
+                    simplemde.value(''); // Limpa o editor SimpleMDE
+                    $('#imagePreview').hide();
+                } else {
+                    alert('Erro: ' + jsonResponse.message);
+                }
+                // Reativar o botão e esconder o spinner
+                $submitButton.prop('disabled', false);
+                $spinner.addClass('d-none');
             },
             error: function(xhr, status, error) {
-              alert('Erro ao enviar os dados.');
+                alert('Erro ao enviar os dados.');
+                // Reativar o botão e esconder o spinner
+                $submitButton.prop('disabled', false);
+                $spinner.addClass('d-none');
             }
-          });
-        }
-      });
+        });
+    }
+});
+
+
     });
   </script>
 </body>

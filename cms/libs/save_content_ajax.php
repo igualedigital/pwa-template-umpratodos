@@ -1,7 +1,14 @@
 <?php
 require 'functions.php';
 
+// Cria a instância de pwaContents sem passar pwaSettings
 $pwaContents = new pwaContents();
+
+// Cria a instância de pwaSettings e passa pwaContents para ele
+$pwaSettings = new pwaSettings($pwaContents);
+
+// Define pwaSettings dentro de pwaContents
+$pwaContents->setPwaSettings($pwaSettings);
 
 $title = $_POST['title'];
 $type = $_POST['type'];
@@ -16,6 +23,7 @@ if ($type === 'text' && isset($_POST['content'])) {
 }
 
 $result = $pwaContents->adicionarConteudo($title, $type, $imageDescription, $imageFile, $contentData);
+
 
 if ($result['status'] === 'success') {
     echo json_encode(['status' => 'success']);

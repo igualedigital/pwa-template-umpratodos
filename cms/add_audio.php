@@ -41,7 +41,7 @@
         <audio id="audioPreview" style="display: none;" controls></audio>
       </div>
       <input type="hidden" name="type" value="audio">
-      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button type="submit" class="btn btn-primary"> <i class="fas fa-spinner fa-spin d-none mr-2"></i> Salvar</button>
     </form>
       </main>
     </div>
@@ -99,32 +99,46 @@ $(document).ready(function(){
 
       // Enviar formulário via AJAX
       $('#audioForm').on('submit', function(event) {
-        event.preventDefault();
-        var formData = new FormData(this);
+    event.preventDefault();
+    
+    // Desabilitar o botão e mostrar o spinner
+    var $submitButton = $(this).find('button[type="submit"]');
+    var $spinner = $submitButton.find('.fas');
+    $submitButton.prop('disabled', true);
+    $spinner.removeClass('d-none');
 
-        $.ajax({
-          url: 'libs/save_content_ajax.php',
-          type: 'POST',
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function(response) {
+    var formData = new FormData(this);
+    
+    $.ajax({
+        url: 'libs/save_content_ajax.php',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
             var jsonResponse = JSON.parse(response);
             if (jsonResponse.status === 'success') {
-              alert('Conteúdo em áudio adicionado!');
-              // Limpar formulário e pré-visualizações
-              $('#audioForm')[0].reset();
-              $('#imagePreview').hide();
-              $('#audioPreview').hide();
+                alert('Conteúdo em áudio adicionado!');
+                // Limpar formulário e pré-visualizações
+                $('#audioForm')[0].reset();
+                $('#imagePreview').hide();
+                $('#audioPreview').hide();
             } else {
-              alert('Erro: ' + jsonResponse.message);
+                alert('Erro: ' + jsonResponse.message);
             }
-          },
-          error: function(xhr, status, error) {
+            // Reativar o botão e esconder o spinner
+            $submitButton.prop('disabled', false);
+            $spinner.addClass('d-none');
+        },
+        error: function(xhr, status, error) {
             alert('Erro ao enviar os dados.');
-          }
-        });
-      });
+            // Reativar o botão e esconder o spinner
+            $submitButton.prop('disabled', false);
+            $spinner.addClass('d-none');
+        }
+    });
+});
+
 
     });
 

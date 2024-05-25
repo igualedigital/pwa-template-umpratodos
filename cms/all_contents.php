@@ -199,7 +199,7 @@ $c_texto = $conteudo->listarConteudo('text');
        
         <div>
           <button type="submit" id="btn_details" class="btn btn-info btn-details" data-tipo="<?= htmlspecialchars($item['tipo'] ?? ''); ?>" data-icon="<?= htmlspecialchars($icon ?? '');?>" data-titulo="<?= htmlspecialchars($item['titulo'] ?? ''); ?>" data-imagem="<?= htmlspecialchars($item['imagem'] ?? ''); ?>" data-descricao="<?= htmlspecialchars($item['descricao-da-imagem'] ?? ''); ?>" data-arquivo="<?=htmlspecialchars($item['arquivo'] ?? ''); ?>"><i class="fa-solid fa-binoculars"></i> Exibir</button>
-          <button type="submit" id="btn_delete" class="btn btn-danger" data-arquivo="<?= htmlspecialchars($item['arquivo']); ?>"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+          <button type="submit" id="btn_delete" class="btn btn-danger btn-delete" data-arquivo="<?= htmlspecialchars($item['arquivo']); ?>"><i class="fa-solid fa-trash-can"></i> Excluir</button>
         </div>
         
       </li>
@@ -325,10 +325,53 @@ $c_texto = $conteudo->listarConteudo('text');
     $('#detailsModal').modal('show');
   });
 
+  $('.btn_delete').on('click', function() {
+        var arquivo = $(this).data('arquivo');
+        $.ajax({
+            url: 'libs/delete_content_ajax.php',
+            type: 'POST',
+            data: { arquivo: arquivo },
+            success: function(response) {
+                var res = JSON.parse(response);
+                if (res.status === 'success') {
+                    alert('Conteúdo excluído com sucesso.');
+                    location.reload(); // Atualiza a página para refletir a exclusão
+                } else {
+                    alert('Erro ao excluir conteúdo: ' + res.message);
+                }
+            },
+            error: function() {
+                alert('Erro ao excluir conteúdo.');
+            }
+        });
+    });
+
   // Parar a mídia ao fechar o modal
   $('#detailsModal').on('hidden.bs.modal', function () {
     $('#modal-content').html('');
   });
+
+  $('.btn-delete').on('click', function() {
+   
+   var arquivo = $(this).data('arquivo');
+   $.ajax({
+       url: 'libs/delete_content_ajax.php',
+       type: 'POST',
+       data: { arquivo: arquivo },
+       success: function(response) {
+           var res = JSON.parse(response);
+           if (res.status === 'success') {
+               alert('Conteúdo excluído com sucesso.');
+               location.reload(); // Atualiza a página para refletir a exclusão
+           } else {
+               alert('Erro ao excluir conteúdo: ' + res.message);
+           }
+       },
+       error: function() {
+           alert('Erro ao excluir conteúdo.');
+       }
+   });
+});
 
     });
   </script>

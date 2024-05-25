@@ -7,9 +7,18 @@ class pwaSettings {
     private $sizeInBytes;
     private $formattedSize;
     private $appId;
+    private $pwaContents;
+  
 
-    public function __construct() {
+    public function __construct($pwaContents = null) {
 
+       // Se uma instância de pwaContents for fornecida, use-a
+       if ($pwaContents) {
+        $this->pwaContents = $pwaContents;
+        $pwaContents->setPwaSettings($this); // Defina a instância de pwaSettings em pwaContents
+    } else {
+        $this->pwaContents = new pwaContents($this);
+    }
 
         $this->filePath = PWA_DIR . DIRECTORY_SEPARATOR . 'cms' . DIRECTORY_SEPARATOR .'outputs'. DIRECTORY_SEPARATOR . 'projeto-pwa.json';
         $this->cmsDirectory = PWA_CMS_DIR;
@@ -19,21 +28,28 @@ class pwaSettings {
     }
 
 
-    public function updatePwa($titulo, $subtitulo, $descricao, $estado) {
+    public function updatePwa($titulo, $subtitulo, $descricao, $estado,$autoplay_audio,$autoplay_video,$auto_fullscreen,$home_back_timer) {
         $data = array(
             'app-id' => $this->appId,
             'titulo' => $titulo,
             'sub-titulo' => $subtitulo,
             'descricao' => $descricao,
             'estado-pwa' => (int)$estado,
+            'autoplay-audio' => (int)$autoplay_audio,
+            'autoplay-video' => (int)$autoplay_video,
+            'auto-fullscreen' => (int)$auto_fullscreen,
+            'home-back-timer' => (int)$home_back_timer,
             'diretorio-base' => PWA_DIR,
+            'diretorio-base-web' => PWA_WEB_BASE,
             'tamanho' => $this->formattedSize,
             'conteudos' => array()
         );
 
+       
         $json_data = json_encode($data, JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK);
 
         if (file_put_contents($this->filePath, $json_data)) {
+            $this->pwaContents->updateJSfiles();
             return 'success';
         } else {
             http_response_code(500);
@@ -55,7 +71,12 @@ class pwaSettings {
             'sub-titulo' => 'Um exemplo de Progressive Web App',
             'descricao' => 'Descrição desse maravilhoso projeto PWA',
             'estado-pwa' => 0,
+            'autoplay-audio' => 1,
+            'autoplay-video' => 1,
+            'auto-fullscreen' => 0,
+            'home-back-timer' => 0,
             'diretorio-base' => PWA_DIR,
+            'diretorio-base-web' => PWA_WEB_BASE,
             'tamanho' => $this->formattedSize,
             'conteudos' => array()
         );

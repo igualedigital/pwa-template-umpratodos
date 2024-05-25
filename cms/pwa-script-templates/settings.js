@@ -4,22 +4,22 @@ pwaFw.subtitle = "@subtitle";
 pwaFw.description = "@description";
 
 // Determine abaixo o caminho relativo do webapp;
-pwaFw.base_dir = "@basedir";
+pwaFw.base_dir = "@web_base_dir";
 pwaFw.appId = '@app-id';
 pwaFw.version = '1.6.1';
 
 // Configurações padrão e fallBack
 // Determine na variável abaixo: 1 para ativar o pwa | 0 = para não ativar o pwa.
-pwaFw.pwa_ready = 1;
+pwaFw.pwa_ready = @pwa_ready;
 
 // Determine o autoplay em arquivos de audio.
-pwaFw.audio_autoplay = 1;
+pwaFw.audio_autoplay = @autoplay_audio;
 
 // Determine o autoplay em arquivos de vídeo.
-pwaFw.video_autoplay = 1;
+pwaFw.video_autoplay = @autoplay_video;
 
 // Determine se a execução de vídeo será realizada automaticamente em modo fullscreen.
-pwaFw.videos_autofullscreen = 0;
+pwaFw.videos_autofullscreen = @auto_fullscreen;
 
 // Determine se a home deve ser carregada em caso de inativadade. Defina o tempo em milesegundos.
 // Para não disparar o evento deixe o valor em 0; ex: defina 300000 para 5 minutos., 15000 para 15 segundos, etc...
@@ -33,7 +33,7 @@ pwaFw.videos_autofullscreen = 0;
  */
 
 //pwaFw.inactive_home_back_timer = 300000; // 5 minutos.
-pwaFw.inactive_home_back_timer = 0; // inativo -> padrão
+pwaFw.inactive_home_back_timer = @home_back_timer; // inativo -> padrão
 
 /**
  * Determina o tipo de exibição dos controles de navegação quando existe somente de 1 item por recurso

@@ -24,7 +24,8 @@
 </IfModule>
 
   ## Variaveis de ambiente
-  #SetEnv WEBAPP_DIRECTORY /projetos/casa-do-braille/itaipu/barragem/
+  SetEnv APP_DIRECTORY /dev/pwa/
+  SetEnv CMS_DIRECTORY /dev/pwa/cms/
 
 	#AuthType Basic
 	#AuthName "Acesso Restrito"

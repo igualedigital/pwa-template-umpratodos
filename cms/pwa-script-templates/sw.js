@@ -3,11 +3,11 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox
 if (workbox) {
     console.log(`[Workbox] carregado!`);
 
-    const base_dir = '@basedir';
+    const base_dir = '@web_base_dir';
     const rev_val = @cacheversion;
 
     workbox.core.setCacheNameDetails({
-        prefix: '@app-id',
+        prefix: '@app-prefix',
         suffix: 'v'+rev_val,
         precache: 'precache',
         runtime: 'runtime-cache'
@@ -30,8 +30,7 @@ if (workbox) {
 
         { url: base_dir + 'assets/js/jquery/jquery.3.7.1.js', revision: rev_val },
         { url: base_dir + 'assets/js/class.MediaTracks.js', revision: rev_val },
-        { url: base_dir + 'assets/js/conteudos.js', revision: rev_val },
-        { url: base_dir + 'assets/js/index.js', revision: rev_val },
+        { url: base_dir + 'assets/js/conteudo.js', revision: rev_val },
         { url: base_dir + 'assets/js/main.js', revision: rev_val },
 
         { url: base_dir + 'assets/pwa/icon-48.png', revision: rev_val },
