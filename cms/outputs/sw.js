@@ -4,7 +4,7 @@ if (workbox) {
     console.log(`[Workbox] carregado!`);
 
     const base_dir = '/dev/pwa/';
-    const rev_val = 75;
+    const rev_val = 76;
 
     workbox.core.setCacheNameDetails({
         prefix: 'f0a4e73ca1802db84dd0ec461e65004d_',
@@ -111,17 +111,18 @@ if (workbox) {
         
         // Arquivos de audio
        
-        { url: base_dir + 'storage/media/text/ba391c1172b412f59bcb78548ef23cbf.html', revision: '75' },
-{ url: base_dir + 'storage/media/text/c34b971f8db65dadb5fecabda77487dc.html', revision: '75' },
-{ url: base_dir + 'storage/media/text/4596e23b4e8b5928b29f8013bab6c972.html', revision: '75' },
-{ url: base_dir + 'storage/media/video/665134b5e2ca3-vertical-sample.mp4', revision: '75' },
-{ url: base_dir + 'storage/media/video/665134c4a41c9-file_example_MP4_480_1_5MG.mp4', revision: '75' },
-{ url: base_dir + 'storage/media/audio/665134eb411a0-sample.mp3', revision: '75' },
-{ url: base_dir + 'storage/media/audio/665135672be44-Ritchie Valens - La Bamba.mp3', revision: '75' },
-{ url: base_dir + 'storage/media/text/2a7b64adefd89fcce5bb112360e2621b.html', revision: '75' },
-{ url: base_dir + 'storage/media/text/17deec052cb72a7f0200e8604970dd29.html', revision: '75' },
-{ url: base_dir + 'storage/media/audio/66514f9b4480f-sample.mp3', revision: '75' },
-{ url: base_dir + 'storage/media/video/665151b941539-vertical-sample.mp4', revision: '75' },
+        { url: base_dir + 'storage/media/text/ba391c1172b412f59bcb78548ef23cbf.html', revision: '76' },
+{ url: base_dir + 'storage/media/text/c34b971f8db65dadb5fecabda77487dc.html', revision: '76' },
+{ url: base_dir + 'storage/media/text/4596e23b4e8b5928b29f8013bab6c972.html', revision: '76' },
+{ url: base_dir + 'storage/media/video/665134b5e2ca3-vertical-sample.mp4', revision: '76' },
+{ url: base_dir + 'storage/media/video/665134c4a41c9-file_example_MP4_480_1_5MG.mp4', revision: '76' },
+{ url: base_dir + 'storage/media/audio/665134eb411a0-sample.mp3', revision: '76' },
+{ url: base_dir + 'storage/media/audio/665135672be44-Ritchie Valens - La Bamba.mp3', revision: '76' },
+{ url: base_dir + 'storage/media/text/2a7b64adefd89fcce5bb112360e2621b.html', revision: '76' },
+{ url: base_dir + 'storage/media/text/17deec052cb72a7f0200e8604970dd29.html', revision: '76' },
+{ url: base_dir + 'storage/media/audio/66514f9b4480f-sample.mp3', revision: '76' },
+{ url: base_dir + 'storage/media/video/665151b941539-vertical-sample.mp4', revision: '76' },
+{ url: base_dir + 'storage/media/audio/66520d63a945a-sample.mp3', revision: '76' },
         
        
     ]);

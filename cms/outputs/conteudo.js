@@ -15,3 +15,4 @@ pwaFw.conteudo.adicionarFaixa('Texto com imagem, está duplicado?', '6651364de5d
 
 pwaFw.conteudo.adicionarFaixa('Uma musica brega', null, 'brega.', '66514f9b4480f-sample.mp3', 'audio');
 pwaFw.conteudo.adicionarFaixa('Video do benga boys', null, null, '665151b941539-vertical-sample.mp4', 'video');
+pwaFw.conteudo.adicionarFaixa('Audio last.', null, null, '66520d63a945a-sample.mp3', 'audio');

@@ -1,36 +1,44 @@
-# nega acesso aos arquivos .inc e ini
-<files *.ini>
-	order deny,allow
-	deny from all
-</files>
-	Options +MultiViews
-	
-	# remove a extensão para arquivos .php
-	<IfModule mod_rewrite.c>
+# Nega acesso aos arquivos .inc e .ini
+<Files ~ "\.(ini|inc)$">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Configurações de opções
+Options +MultiViews
+
+# Remove a extensão para arquivos .php
+<IfModule mod_rewrite.c>
     Options +FollowSymLinks -MultiViews
     RewriteEngine on
 
-	#RewriteBase /projetos/casa-do-braille/itaipu/barragem/
+    # Remove a extensão .php dos URLs
     RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-d
     RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}\.php -f
     RewriteRule ^(.*)$ $1.php [L]
-	
-	#RewriteBase /
-	#RewriteRule ^index\.php$ - [L]
-	#RewriteCond %{REQUEST_FILENAME} !-f
-	#RewriteCond %{REQUEST_FILENAME} !-d
-	#RewriteRule . /index.php [L]
 
+    # Preserva o cabeçalho de autorização
+    RewriteCond %{HTTP:Authorization} ^Basic\s(.+)$ [NC]
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
 </IfModule>
 
-  ## Variaveis de ambiente
-  SetEnv APP_DIRECTORY /dev/pwa/
-  SetEnv CMS_DIRECTORY /dev/pwa/cms/
+# Variáveis de ambiente
+SetEnv APP_DIRECTORY /dev/pwa/
+SetEnv CMS_DIRECTORY /dev/pwa/cms/
 
-	#AuthType Basic
-	#AuthName "Acesso Restrito"
-	#AuthUserFile /var/www/.htpasswd
-	#Require valid-user
-	#login: umpratodos
-	#senha: umpratodos
+# Acesso ao CMS
+AuthType Basic
+AuthName "Acesso restrito ao CMS"
+AuthUserFile /dev/null
+Require valid-user
 
+# Definindo o usuário e a senha diretamente
+<RequireAll>
+    Require expr %{HTTP:Authorization} =~ /^Basic dW1wcmF0b2Rvczp1bXByYXRvZG9z$/
+</RequireAll>
+
+# Definindo o cabeçalho de autorização com credenciais codificadas em Base64
+<IfModule mod_headers.c>
+    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    RequestHeader set Authorization "Basic dW1wcmF0b2Rvczp1bXByYXRvZG9z"
+</IfModule>
