@@ -31,6 +31,8 @@ AuthType Basic
 AuthName "Acesso restrito ao CMS"
 AuthUserFile /dev/null
 Require valid-user
+#login: umpratodos
+#senha: umpratodos
 
 # Definindo o usuário e a senha diretamente
 <RequireAll>
