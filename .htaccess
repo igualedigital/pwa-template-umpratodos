@@ -31,10 +31,10 @@ SetEnv APP_DIRECTORY /
 SetEnv CMS_DIRECTORY /cms/
 
 # Acesso ao CMS
-#AuthType Basic
-#AuthName "Acesso restrito ao CMS"
-#AuthUserFile /dev/null
-#Require valid-user
+AuthType Basic
+AuthName "Acesso restrito ao CMS"
+AuthUserFile /dev/null
+Require valid-user
 
 # Definindo o usuário e a senha diretamente
 
