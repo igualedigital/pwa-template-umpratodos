@@ -49,6 +49,7 @@
               <div class="form-group">
                 <label>Estado do PWA</label>
                 <input type="checkbox" id="estado" name="estado" data-toggle="toggle" data-size="xs" data-on="ativo" data-off="inativo" <?php echo ($infoPwa['estado-pwa'] == 1) ? 'checked' : ''; ?>>
+                <br><small>Quando ativado o PWA poderá ser instalado com navegação 100% offline.</small>
               </div>
               <div class="form-group">
                 <label>Autoexecução de arquivos de Áudio.</label>

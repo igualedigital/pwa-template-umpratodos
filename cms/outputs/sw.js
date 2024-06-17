@@ -3,11 +3,11 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox
 if (workbox) {
     console.log(`[Workbox] carregado!`);
 
-    const base_dir = '/dev/pwa/';
-    const rev_val = 76;
+    const base_dir = '/';
+    const rev_val = 104;
 
     workbox.core.setCacheNameDetails({
-        prefix: 'f0a4e73ca1802db84dd0ec461e65004d_',
+        prefix: 'ec0668edf9a56535b6a45c95878315eb_',
         suffix: 'v'+rev_val,
         precache: 'precache',
         runtime: 'runtime-cache'
@@ -111,18 +111,15 @@ if (workbox) {
         
         // Arquivos de audio
        
-        { url: base_dir + 'storage/media/text/ba391c1172b412f59bcb78548ef23cbf.html', revision: '76' },
-{ url: base_dir + 'storage/media/text/c34b971f8db65dadb5fecabda77487dc.html', revision: '76' },
-{ url: base_dir + 'storage/media/text/4596e23b4e8b5928b29f8013bab6c972.html', revision: '76' },
-{ url: base_dir + 'storage/media/video/665134b5e2ca3-vertical-sample.mp4', revision: '76' },
-{ url: base_dir + 'storage/media/video/665134c4a41c9-file_example_MP4_480_1_5MG.mp4', revision: '76' },
-{ url: base_dir + 'storage/media/audio/665134eb411a0-sample.mp3', revision: '76' },
-{ url: base_dir + 'storage/media/audio/665135672be44-Ritchie Valens - La Bamba.mp3', revision: '76' },
-{ url: base_dir + 'storage/media/text/2a7b64adefd89fcce5bb112360e2621b.html', revision: '76' },
-{ url: base_dir + 'storage/media/text/17deec052cb72a7f0200e8604970dd29.html', revision: '76' },
-{ url: base_dir + 'storage/media/audio/66514f9b4480f-sample.mp3', revision: '76' },
-{ url: base_dir + 'storage/media/video/665151b941539-vertical-sample.mp4', revision: '76' },
-{ url: base_dir + 'storage/media/audio/66520d63a945a-sample.mp3', revision: '76' },
+        { url: base_dir + 'storage/media/text/3eea37610932f40b345ac90deaa359f5.html', revision: '104' },
+{ url: base_dir + 'storage/media/audio/667069d0638e2-audio-sample-1.mp3', revision: '104' },
+{ url: base_dir + 'storage/media/audio/667069e3e1f77-audio-sample-2.mp3', revision: '104' },
+{ url: base_dir + 'storage/media/audio/66706a0beb208-audio-sample-3.mp3', revision: '104' },
+{ url: base_dir + 'storage/media/text/53c684c18b31fe12b935c65679354b39.html', revision: '104' },
+{ url: base_dir + 'storage/media/text/c4e743abe73bdd5220815517646f11c4.html', revision: '104' },
+{ url: base_dir + 'storage/media/video/66706ad17ba77-vertical-sample.mp4', revision: '104' },
+{ url: base_dir + 'storage/media/video/66706aed446ef-video-sample-vertical.mp4', revision: '104' },
+{ url: base_dir + 'storage/media/video/66706b0fa9543-video-sample-horizontal.mp4', revision: '104' },
         
        
     ]);

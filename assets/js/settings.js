@@ -1,11 +1,11 @@
 // Determine o título, subtítulo e descrição do webapp
-pwaFw.title = "Um projeto novo - Vai";
-pwaFw.subtitle = "Super exposição do baralho azul";
-pwaFw.description = "Uma droga como sempre.";
+pwaFw.title = "Projeto PWA";
+pwaFw.subtitle = "Projeto modelo para pwa de bancada acessível";
+pwaFw.description = "Novo projeto PWA";
 
 // Determine abaixo o caminho relativo do webapp;
-pwaFw.base_dir = "/dev/pwa/";
-pwaFw.appId = 'f0a4e73ca1802db84dd0ec461e65004d';
+pwaFw.base_dir = "/";
+pwaFw.appId = 'ec0668edf9a56535b6a45c95878315eb';
 pwaFw.version = '1.6.1';
 
 // Configurações padrão e fallBack

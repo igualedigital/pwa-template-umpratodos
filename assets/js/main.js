@@ -19,12 +19,15 @@ pwaFw.initializer = function() {
             // Guarda o evento para uso posterior
             window.deferredPrompt = e;
 
-            if (pwaFw.pwa_ready == "1") {
+            if (pwaFw.pwa_ready == 1) {
                 // Show install button if preloader has finished loading
                 if ($('.progress-bar').width() >= 98 + '%') {
                     showInstallPromotion();
                 }
-            }
+            };
+            //else{
+               // $('link[rel="manifest"]').remove();
+            //}
         });
 
         function showInstallPromotion() {

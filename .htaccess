@@ -22,23 +22,28 @@ Options +MultiViews
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
 </IfModule>
 
-# Variáveis de ambiente
-SetEnv APP_DIRECTORY /dev/pwa/
-SetEnv CMS_DIRECTORY /dev/pwa/cms/
+# Variáveis de ambiente (production)
+#SetEnv APP_DIRECTORY /dev/template-pwa-bancada/
+#SetEnv CMS_DIRECTORY /dev/template-pwa-bancada/cms/
+
+# Variáveis de ambiente (development)
+SetEnv APP_DIRECTORY /
+SetEnv CMS_DIRECTORY /cms/
 
 # Acesso ao CMS
-AuthType Basic
-AuthName "Acesso restrito ao CMS"
-AuthUserFile /dev/null
-Require valid-user
+#AuthType Basic
+#AuthName "Acesso restrito ao CMS"
+#AuthUserFile /dev/null
+#Require valid-user
 
 # Definindo o usuário e a senha diretamente
-<RequireAll>
-    Require expr %{HTTP:Authorization} =~ /^Basic dW1wcmF0b2Rvczp1bXByYXRvZG9z$/
-</RequireAll>
+
+#<RequireAll>
+#    Require expr %{HTTP:Authorization} =~ /^Basic dW1wcmF0b2Rvczp1bXByYXRvZG9z$/
+#</RequireAll>
 
 # Definindo o cabeçalho de autorização com credenciais codificadas em Base64
-<IfModule mod_headers.c>
-    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
-    RequestHeader set Authorization "Basic dW1wcmF0b2Rvczp1bXByYXRvZG9z"
-</IfModule>
+#<IfModule mod_headers.c>
+#    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+#    RequestHeader set Authorization "Basic dW1wcmF0b2Rvczp1bXByYXRvZG9z"
+#</IfModule>

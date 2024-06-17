@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php 
+ include('libs/functions.php');
+ ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

@@ -1,15 +1,15 @@
 {
-    "app-id": "f0a4e73ca1802db84dd0ec461e65004d",
-    "titulo": "Um projeto novo - Vai",
-    "sub-titulo": "Super exposi\u00e7\u00e3o do baralho azul",
-    "descricao": "Uma droga como sempre.",
+    "app-id": "ec0668edf9a56535b6a45c95878315eb",
+    "titulo": "Projeto PWA",
+    "sub-titulo": "Projeto modelo para pwa de bancada acess\u00edvel",
+    "descricao": "Novo projeto PWA",
     "estado-pwa": 0,
     "autoplay-audio": 1,
     "autoplay-video": 1,
     "auto-fullscreen": 0,
     "home-back-timer": 0,
-    "diretorio-base": "D:\/web_server\/testes\/dev\/pwa\/",
-    "diretorio-base-web": "\/dev\/pwa\/",
-    "tamanho": "384.35 MB",
+    "diretorio-base": "X:\/iguale\/umpratodos\/qrcode.umpratodos.com.br.devx\/public\/dev\/template-pwa-bancada\/",
+    "diretorio-base-web": "\/",
+    "tamanho": "268.05 MB",
     "conteudos": []
 }

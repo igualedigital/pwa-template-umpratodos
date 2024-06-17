@@ -1,10 +1,10 @@
 {
-  "name": "Um projeto novo - Vai",
-  "short_name": "Super exposição do baralho azul",
-  "description": "Uma droga como sempre.",
-  "scope": "/dev/pwa/",
-  "id": "f0a4e73ca1802db84dd0ec461e65004d",
-  "start_url": "/dev/pwa/index.html",
+  "name": "Projeto PWA",
+  "short_name": "Projeto modelo para pwa de bancada acessível",
+  "description": "Novo projeto PWA",
+  "scope": "/",
+  "id": "ec0668edf9a56535b6a45c95878315eb",
+  "start_url": "/index.html",
   "display": "fullscreen",
   "display_override": ["fullscreen", "standalone"],
   "orientation": "portrait",
@@ -13,34 +13,34 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/dev/pwa/assets/pwa/icon-72.png",
+      "src": "/assets/pwa/icon-72.png",
       "sizes": "72x72",
       "type": "image/png"
     },
     {
-      "src": "/dev/pwa/assets/pwa/icon-96.png",
+      "src": "/assets/pwa/icon-96.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "/dev/pwa/assets/pwa/icon-144.png",
+      "src": "/assets/pwa/icon-144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/dev/pwa/assets/pwa/icon-192.png",
+      "src": "/assets/pwa/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/dev/pwa/assets/pwa/icon-512.png",
+      "src": "/assets/pwa/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "/dev/pwa/assets/pwa/pwa-screenshot.png",
+      "src": "/assets/pwa/pwa-screenshot.png",
       "type": "image/png",
       "sizes": "540x720"
     }
